@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music on Stage 2026 | 審査員特別賞 攻略ノート</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap');
+
+  :root{
+    --bg: #0a0a0f;
+    --bg-soft: #121218;
+    --line: #24242e;
+    --ink: #f2f0ea;
+    --ink-dim: #9a97a8;
+    --pink: #ff2e63;
+    --cyan: #23e8d6;
+    --gold: #ffc93c;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  .noise{
+    position:fixed; inset:0; pointer-events:none; opacity:.035; z-index:1;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap{max-width:880px; margin:0 auto; padding:0 24px; position:relative; z-index:2;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 72px;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; top:-40%; right:-15%;
+    width:520px; height:520px; border-radius:50%;
+    background:radial-gradient(circle, rgba(255,46,99,.35), transparent 65%);
+    filter:blur(10px);
+    z-index:0;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; bottom:-35%; left:-10%;
+    width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle, rgba(35,232,214,.28), transparent 65%);
+    filter:blur(10px);
+    z-index:0;
+  }
+  .eyebrow{
+    position:relative; z-index:1;
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink-dim);
+    border:1px solid var(--line);
+    padding:6px 14px; border-radius:999px;
+    margin-bottom:28px;
+  }
+  .eyebrow span.dot{width:6px; height:6px; border-radius:50%; background:var(--pink); box-shadow:0 0 8px var(--pink);}
+
+  h1{
+    position:relative; z-index:1;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(38px, 6.5vw, 64px);
+    line-height:1.05;
+    letter-spacing:-.01em;
+    margin-bottom:20px;
+  }
+  h1 .hi{
+    background:linear-gradient(90deg, var(--pink), var(--gold) 60%, var(--cyan));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .lede{
+    position:relative; z-index:1;
+    max-width:56ch;
+    font-size:16.5px;
+    color:var(--ink-dim);
+  }
+
+  .event-strip{
+    position:relative; z-index:1;
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--bg-soft);
+  }
+  .event-cell{
+    padding:18px 20px;
+    border-right:1px solid var(--line);
+  }
+  .event-cell:last-child{border-right:none;}
+  .event-cell .k{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-dim); margin-bottom:6px;
+  }
+  .event-cell .v{font-size:17px; font-weight:700;}
+  .event-cell .v.accent{color:var(--gold);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:64px 0; border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:36px;}
+  .section-head .num{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12px; color:var(--pink); letter-spacing:.15em; text-transform:uppercase;
+    margin-bottom:10px; display:block;
+  }
+  .section-head h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(24px,4vw,32px);
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  .section-head p{color:var(--ink-dim); margin-top:10px; max-width:60ch; font-size:15px;}
+
+  /* ---------- NOTICE ---------- */
+  .notice{
+    background:linear-gradient(180deg, rgba(255,201,60,.09), rgba(255,201,60,.03));
+    border:1px solid rgba(255,201,60,.35);
+    border-radius:14px;
+    padding:22px 24px;
+    font-size:14.5px;
+    color:#e9e2c8;
+  }
+  .notice b{color:var(--gold);}
+
+  /* ---------- TIPS ---------- */
+  .tip{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:22px;
+    padding:28px 0;
+    border-top:1px solid var(--line);
+  }
+  .tip:first-of-type{border-top:none;}
+  .tip-num{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:34px; font-weight:700;
+    color:transparent;
+    -webkit-text-stroke:1px var(--ink-dim);
+    line-height:1;
+  }
+  .tip h3{font-size:18.5px; margin-bottom:8px; font-weight:700;}
+  .tip p{color:var(--ink-dim); font-size:14.5px; max-width:62ch;}
+  .tip .tag{
+    display:inline-block;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--cyan);
+    margin-bottom:10px;
+  }
+
+  /* ---------- JUDGE CARD ---------- */
+  .judge-card{
+    display:flex; gap:20px; align-items:flex-start;
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:26px;
+  }
+  .judge-avatar{
+    flex:0 0 auto;
+    width:56px; height:56px; border-radius:50%;
+    background:conic-gradient(from 180deg, var(--pink), var(--gold), var(--cyan), var(--pink));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700; font-size:13px; color:var(--bg);
+  }
+  .judge-card h3{font-size:17px; margin-bottom:6px;}
+  .judge-card p{color:var(--ink-dim); font-size:14.5px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:48px 0 72px;}
+  footer p{font-size:13px; color:var(--ink-dim);}
+  footer a{color:var(--cyan); text-decoration:none; border-bottom:1px solid rgba(35,232,214,.4);}
+
+  @media (max-width:640px){
+    .event-strip{grid-template-columns:1fr;}
+    .event-cell{border-right:none; border-bottom:1px solid var(--line);}
+    .event-cell:last-child{border-bottom:none;}
+    .tip{grid-template-columns:40px 1fr; gap:14px;}
+    .tip-num{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow"><span class="dot"></span>TikTok LIVE 攻略ノート</div>
+    <h1>審査員特別賞を<br><span class="hi">獲るための</span>5つの視点</h1>
+    <p class="lede">Music on Stage 2026・公式LIVE当日に向けて。派手なテクニックより先に押さえておきたい、ステージの組み立て方を整理しました。</p>
+
+    <div class="event-strip">
+      <div class="event-cell">
+        <div class="k">Date</div>
+        <div class="v">2026.08.28</div>
+      </div>
+      <div class="event-cell">
+        <div class="k">Time</div>
+        <div class="v">19:00 – 21:00</div>
+      </div>
+      <div class="event-cell">
+        <div class="k">Judge</div>
+        <div class="v accent">DJ KOO</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NOTICE -->
+  <section>
+    <div class="section-head">
+      <span class="num">Before you read</span>
+      <h2>まず前提として</h2>
+    </div>
+    <div class="notice">
+      「審査員特別賞」の<b>公式な選考基準</b>は、現時点でTikTokから詳細な形では公開されていません。DJ KOOさんが今回の審査を務めるという点も、公式発表として確認が取れた情報ではない点にご留意ください。以下は、TikTok LIVE Music on Stageの評価傾向や、DJ KOOさんのこれまでの活動から見えてくる「効くと考えられるポイント」の整理です。当日の告知や公式アカウントの最新情報も必ず併せてチェックしてください。
+    </div>
+  </section>
+
+  <!-- JUDGE -->
+  <section>
+    <div class="section-head">
+      <span class="num">Know your judge</span>
+      <h2>DJ KOOさんはどんな審査員か</h2>
+    </div>
+    <div class="judge-card">
+      <div class="judge-avatar">KOO</div>
+      <div>
+        <h3>"盛り上げ番長" としての審査軸</h3>
+        <p>TRFのDJ・リーダーとして活動し、ダンスクラシックからJ-POP、アニソンまで幅広くプレイするエンターテイナー。お笑いの審査経験もあり、「技術」以上に「その場をどれだけ熱くできたか」を重視する審査員だと考えられます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section>
+    <div class="section-head">
+      <span class="num">The checklist</span>
+      <h2>審査員特別賞を狙う5つの視点</h2>
+    </div>
+
+    <div class="tip">
+      <div class="tip-num">01</div>
+      <div>
+        <span class="tag">Originality</span>
+        <h3>オリジナリティを前面に出す</h3>
+        <p>カバー曲より、自作曲やアレンジを加えたパフォーマンスの方が印象に残りやすい。「この人にしかできない」歌唱スタイル・ビジュアル・演出を明確に打ち出す。</p>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-num">02</div>
+      <div>
+        <span class="tag">Live energy</span>
+        <h3>ライブ感・エンターテインメント性</h3>
+        <p>上手さだけでなく "場を盛り上げる力" を意識する。グルーヴ感、ビートへの反応の良さ、観客を巻き込む熱量は、DJ KOOさんの審査軸と特に相性が良いポイント。</p>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-num">03</div>
+      <div>
+        <span class="tag">Visual craft</span>
+        <h3>TikTokらしい映像的な見せ方</h3>
+        <p>縦型LIVE配信に最適化した画角・照明・カメラワーク。TikTokは離脱が早いため、冒頭数秒で惹きつける構成を意識する。</p>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-num">04</div>
+      <div>
+        <span class="tag">Engagement</span>
+        <h3>ファンとのエンゲージメント</h3>
+        <p>コメントやギフトへのリアルタイムな反応、視聴者との一体感。事前の告知・拡散（#MusicOnStage）でどれだけ盛り上がりを作れているかも評価につながる。</p>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-num">05</div>
+      <div>
+        <span class="tag">Story</span>
+        <h3>ストーリー性を持たせる</h3>
+        <p>なぜこの曲・このパフォーマンスをするのか、という背景やメッセージ性があると審査員の記憶に残りやすい。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>当日の詳細な審査基準や評価ポイントは、番組内・直前告知で発表される可能性があります。最新情報は TikTok LIVE Japan 公式アカウント（<a href="https://www.tiktok.com/@tiktok_live_japan" target="_blank" rel="noopener">@tiktok_live_japan</a> / <a href="https://www.tiktok.com/@tiktoklive_onstage" target="_blank" rel="noopener">@tiktoklive_onstage</a>）で必ずご確認ください。</p>
+  </footer>
+
+</div>
+</body>
+</html>
