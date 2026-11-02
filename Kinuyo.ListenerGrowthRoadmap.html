@@ -1,0 +1,535 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Kinuyo リスナー増加ロードマップ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: スマホ縦スクロール前提。TikTokのLIVE画面のように、黒地に紫を主役、シアンとピンクは文字のずれ演出にだけ使う。 */
+:root {
+  --bg: #0d0714;
+  --surface: #181022;
+  --surface-2: #221733;
+  --line: #34264b;
+  --fg: #f7f3fc;
+  --muted: #b8abcf;
+  --purple: #a259ff;
+  --purple-fill: #7c3aed;
+  --purple-soft: #d3b8ff;
+  --cyan: #25f4ee;
+  --pink: #fe2c55;
+  --font-display: "Dela Gothic One", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  padding-block: 0 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-text-size-adjust: 100%;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  z-index: 30;
+}
+.wrap { max-width: 720px; margin-inline: auto; }
+a { color: var(--purple-soft); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible + label {
+  outline: 3px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+h1, h2, h3 { text-wrap: balance; margin: 0; line-height: 1.35; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+/* 上部ナビ */
+.topbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-inline: max(16px, env(safe-area-inset-left, 0px));
+}
+.topbar .wrap { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.tabs {
+  display: flex; gap: 4px; overflow-x: auto; min-width: 0;
+  scrollbar-width: none; padding-block: 4px;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tabs a {
+  flex: none; text-decoration: none; color: var(--muted);
+  font-weight: 700; font-size: 0.9rem; padding: 10px 12px; border-radius: 999px;
+}
+.tabs a:hover { color: var(--fg); background: var(--surface); }
+
+/* ヒーロー */
+.hero { padding-block: 28px 8px; display: grid; gap: 20px; }
+.live {
+  display: inline-flex; align-items: center; gap: 8px; width: fit-content;
+  background: var(--pink); color: #fff; font-weight: 900; font-size: 0.8rem;
+  letter-spacing: 0.12em; padding: 4px 12px 4px 10px; border-radius: 6px;
+}
+.live i {
+  width: 8px; height: 8px; border-radius: 50%; background: #fff;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse { 50% { opacity: 0.25; transform: scale(0.8); } }
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 9vw, 3.4rem);
+  line-height: 1.25;
+  text-shadow: -2px 0 var(--cyan), 2px 0 var(--pink);
+  letter-spacing: 0.01em;
+}
+.hero h1 em { font-style: normal; color: var(--purple); text-shadow: -2px 0 var(--cyan), 2px 0 var(--pink); }
+.lead { color: var(--muted); font-size: 1.05rem; max-width: 34em; }
+.who { display: flex; align-items: center; gap: 12px; }
+.avatar {
+  width: 48px; height: 48px; border-radius: 50%; flex: none;
+  display: grid; place-items: center; font-family: var(--font-display); font-size: 1.3rem;
+  background: linear-gradient(140deg, var(--purple) 0%, #5b21b6 100%);
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--purple);
+}
+.who b { display: block; line-height: 1.3; }
+.who span { color: var(--muted); font-size: 0.85rem; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.stat {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 12px 10px; text-align: center;
+}
+.stat b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.15rem; color: var(--purple-soft); line-height: 1.4; }
+.stat span { font-size: 0.75rem; color: var(--muted); line-height: 1.4; display: block; }
+
+/* セクション */
+section { padding-block: 44px 0; scroll-margin-top: 64px; }
+.kicker {
+  display: inline-block; font-weight: 900; font-size: 0.75rem; letter-spacing: 0.14em;
+  color: var(--purple); margin-bottom: 8px;
+}
+h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem, 6vw, 2rem); }
+.sec-lead { color: var(--muted); margin-top: 12px; }
+.stack { display: grid; gap: 12px; margin-top: 20px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+  min-width: 0;
+}
+.card h3 { font-size: 1.1rem; font-weight: 900; }
+.tag {
+  display: inline-block; font-size: 0.75rem; font-weight: 900; padding: 2px 10px; border-radius: 999px;
+  background: var(--surface-2); color: var(--purple-soft); border: 1px solid var(--line);
+}
+.tag.hi { background: var(--purple-fill); color: #fff; border-color: var(--purple-fill); }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.dots li { position: relative; padding-left: 20px; margin-top: 8px; }
+.dots li::before {
+  content: ""; position: absolute; left: 2px; top: 0.8em; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--purple);
+}
+.dots.warn li::before { background: var(--pink); }
+.note { margin-top: 16px; font-size: 0.9rem; color: var(--muted); border-left: 3px solid var(--purple); padding-left: 12px; }
+
+/* 3ステップ */
+.steps { display: grid; gap: 12px; margin-top: 20px; }
+.step { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 14px; align-items: start; }
+.step .big {
+  font-family: var(--font-display); font-size: 1.7rem; line-height: 1.2; color: #fff;
+  background: linear-gradient(160deg, var(--purple-fill), #4c1d95);
+  border-radius: 16px; padding: 14px 6px; text-align: center;
+}
+.step .big small { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 700; color: var(--purple-soft); margin-bottom: 2px; }
+.step p { margin-top: 6px; }
+.watch { margin-top: 10px; font-size: 0.85rem; color: var(--muted); }
+.watch b { color: var(--cyan); }
+
+/* ロードマップ */
+.phases { display: grid; gap: 14px; margin-top: 20px; }
+.phase { border-radius: 20px; padding: 20px; background: var(--surface); border: 1px solid var(--line); min-width: 0; }
+.phase header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 12px; }
+.phase h3 { font-size: 1.15rem; font-weight: 900; }
+.date { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.phase ol { counter-reset: n; display: grid; gap: 8px; }
+.phase ol li { counter-increment: n; position: relative; padding-left: 34px; }
+.phase ol li::before {
+  content: counter(n); position: absolute; left: 0; top: 2px; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--surface-2); border: 1px solid var(--purple); color: var(--purple-soft);
+  font-weight: 900; font-size: 0.8rem; display: grid; place-items: center; line-height: 1;
+}
+.gate {
+  margin-top: 16px; padding: 12px 14px; border-radius: 12px;
+  background: color-mix(in srgb, var(--purple-fill) 24%, var(--bg));
+  border: 1px dashed var(--purple); font-size: 0.95rem;
+}
+.gate b { color: var(--purple-soft); margin-right: 6px; }
+
+/* 配信の型 */
+.bar { display: flex; gap: 4px; margin-top: 20px; height: 44px; }
+.bar div {
+  display: grid; place-items: center; font-weight: 900; font-size: 0.75rem; border-radius: 10px; color: #fff; min-width: 0;
+}
+.bar .b1 { flex: 5; background: var(--pink); }
+.bar .b2 { flex: 35; background: var(--purple-fill); }
+.bar .b3 { flex: 20; background: #4c1d95; }
+.bar-cap { display: flex; gap: 4px; font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+.bar-cap span:nth-child(1) { flex: 5; }
+.bar-cap span:nth-child(2) { flex: 35; }
+.bar-cap span:nth-child(3) { flex: 20; text-align: right; }
+.time { font-weight: 900; color: var(--cyan); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+
+/* 導線 */
+.rows li { display: flex; gap: 12px; align-items: flex-start; padding-block: 14px; border-top: 1px solid var(--line); }
+.rows li:first-child { border-top: 0; padding-top: 0; }
+.rows li:last-child { padding-bottom: 0; }
+.rows .tag { flex: none; margin-top: 2px; }
+.rows b { display: block; }
+.rows span.d { color: var(--muted); font-size: 0.95rem; }
+
+/* イベント */
+.line { position: relative; display: grid; gap: 14px; margin-top: 20px; padding-left: 28px; }
+.line::before { content: ""; position: absolute; left: 9px; top: 8px; bottom: 8px; width: 2px; background: var(--purple); }
+.line li { position: relative; }
+.line li::before {
+  content: ""; position: absolute; left: -26px; top: 8px; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--bg); border: 3px solid var(--purple-soft);
+}
+.line .when { font-weight: 900; color: var(--purple-soft); display: block; }
+
+/* KPI */
+.kpi { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; align-items: baseline; padding-block: 14px; border-top: 1px solid var(--line); }
+.kpi:first-child { border-top: 0; padding-top: 0; }
+.kpi:last-child { padding-bottom: 0; }
+.kpi b { font-weight: 900; }
+.kpi .goal { font-family: var(--font-display); color: var(--purple-soft); text-align: right; font-size: 0.95rem; }
+.kpi .d { grid-column: 1 / -1; color: var(--muted); font-size: 0.9rem; }
+
+/* チェックリスト */
+.progress { margin-top: 16px; display: flex; align-items: center; gap: 12px; }
+.meter { flex: 1; height: 10px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--purple-fill), var(--cyan)); transition: width 0.3s; }
+.progress output { font-weight: 900; font-variant-numeric: tabular-nums; min-width: 3em; text-align: right; }
+.todo { display: grid; gap: 10px; margin-top: 16px; }
+.todo input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.todo label {
+  display: flex; gap: 14px; align-items: flex-start; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px;
+}
+.todo .box {
+  flex: none; width: 26px; height: 26px; border-radius: 8px; border: 2px solid var(--purple);
+  display: grid; place-items: center; margin-top: 1px;
+}
+.todo .box::after { content: ""; width: 12px; height: 7px; border-left: 3px solid #fff; border-bottom: 3px solid #fff; transform: rotate(-45deg) translate(1px, -1px); opacity: 0; }
+.todo input:checked + label { border-color: var(--purple); }
+.todo input:checked + label .box { background: var(--purple-fill); }
+.todo input:checked + label .box::after { opacity: 1; }
+.todo input:checked + label .t { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--purple); }
+.todo input:focus-visible + label { outline: 3px solid var(--cyan); outline-offset: 3px; }
+
+.review { margin-top: 20px; }
+.review ol { display: grid; gap: 6px; margin-top: 10px; counter-reset: r; }
+.review li { counter-increment: r; padding-left: 28px; position: relative; }
+.review li::before { content: counter(r) "."; position: absolute; left: 0; font-weight: 900; color: var(--purple-soft); }
+
+.src li { margin-top: 10px; font-size: 0.9rem; color: var(--muted); }
+.src a { font-weight: 700; }
+footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; }
+
+@media (max-width: 520px) {
+  .two { grid-template-columns: minmax(0, 1fr); }
+  .step { grid-template-columns: 64px minmax(0, 1fr); gap: 12px; }
+  .step .big { font-size: 1.4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .live i { animation: none; }
+  .meter i { transition: none; }
+}
+</style>
+
+<div class="topbar">
+  <div class="wrap">
+    <nav class="tabs" aria-label="ページ内メニュー">
+      <a href="#diagnosis">いまの状況</a>
+      <a href="#funnel">3つのカギ</a>
+      <a href="#roadmap">90日計画</a>
+      <a href="#stream">配信の型</a>
+      <a href="#outside">HP・SNS</a>
+      <a href="#event">イベント</a>
+      <a href="#kpi">数字</a>
+      <a href="#todo">今週やること</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+  <header class="hero">
+    <span class="live"><i></i>TikTok LIVE</span>
+    <h1>新規リスナーが<br><em>どんどん増える</em><br>90日ロードマップ</h1>
+    <p class="lead">配信5年目のKinuyoさんが、初めて来てくれた人を「また会いたい人」に変えていくための計画です。</p>
+    <div class="who">
+      <div class="avatar" aria-hidden="true">K</div>
+      <div><b>Kinuyo💜🎶🎧</b><span>2026年11月3日 作成 ・ <a href="https://www.kinuyo-music.com/" target="_blank" rel="noopener">公式HP</a></span></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>5年目</b><span>配信歴</span></div>
+      <div class="stat"><b>ダイヤ</b><span>イベント上位の常連</span></div>
+      <div class="stat"><b>1.5倍</b><span>新規フォロー目標</span></div>
+    </div>
+  </header>
+
+  <section id="diagnosis">
+    <span class="kicker">いまの状況</span>
+    <h2>強みは十分。足りないのは「新しい人の入口」</h2>
+    <p class="sec-lead">5年の積み重ねと歌の力で、ダイヤモンドクラスの上位に入れています。TOP3に届かない差は、外から入ってくる新しい人の数が足りない！。</p>
+    <div class="two">
+      <div class="card">
+        <h3>強み</h3>
+        <ul class="dots">
+          <li>5年の実績と、上位に入る安定感</li>
+          <li>歌唱力と、9月の新曲「Dream Time」「Fly High」</li>
+          <li>10月から東京・福岡・愛知・山口・大阪のツアー</li>
+          <li>HPにスケジュール、CD、ショップ、ファンクラブが揃っている</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>課題(公開情報からの仮説)</h3>
+        <ul class="dots warn">
+          <li>HPのトップに、TikTok LIVEへ誘う入口が見当たらない</li>
+          <li>初めての人向けの入口と、常連の居場所が分かれていない</li>
+          <li>イベントの順位が、常連の応援に寄りやすい</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="funnel">
+    <span class="kicker">考え方</span>
+    <h2>カギは「入る → 残る → 戻る」の3つ</h2>
+    <p class="sec-lead">2026年のTikTok LIVEは、ギフトの金額よりも、長く見てもらえることとコメントのやり取りが大切にされる流れだと、複数の解説がサイトの情報あり。新規を増やす近道は、見ている時間とコメント率を上げること！新規のこの３つの動向を記録・分析・Acitonに繋げよう</p>
+    <div class="steps">
+      <div class="card step">
+        <div class="big"><small>STEP 1</small>入る</div>
+        <div>
+          <h3>初めての人に見つけてもらう</h3>
+          <p>配信前の予告ショート動画、分かりやすい配信タイトル、決まった配信時間で入口を作る。</p>
+          <p class="watch">見る数字:<b>配信開始10分の入室数</b></p>
+        </div>
+      </div>
+      <div class="card step">
+        <div class="big"><small>STEP 2</small>残る</div>
+        <div>
+          <h3>最初の5分で帰らせない</h3>
+          <p>1曲目に乗れるを歌い、初見さんの名前を呼び、コメントで選べる企画を入れます。</p>
+          <p class="watch">見る数字:<b>平均視聴時間 ・ コメント数÷視聴者数</b></p>
+        </div>
+      </div>
+      <div class="card step">
+        <div class="big"><small>STEP 3</small>戻る</div>
+        <div>
+          <h3>次も来たい理由を渡す</h3>
+          <p>次回の日時と曲の予告、リクエスト受付、フォロー、ツアーやファンクラブの案内で、また会う約束をします。</p>
+          <p class="watch">見る数字:<b>新規のうち2回目も来た人の割合</b></p>
+        </div>
+      </div>
+    </div>
+    <p class="note">歌ライバーの強みは、1曲が終わるまで人が留まることです。曲の順番と、曲の合間のひと言が、そのまま数字になります。</p>
+  </section>
+
+  <section id="roadmap">
+    <span class="kicker">90日計画 ・ 2026年11月〜2027年1月</span>
+    <h2>4つのフェーズで進める</h2>
+    <p class="sec-lead">各フェーズの終わりに「次へ進む条件」を置きました。条件を満たしたら次に進みます。</p>
+    <div class="phases">
+      <article class="phase">
+        <header><span class="tag hi">PHASE 0</span><h3>自枠の分析をする</h3><span class="date">11/3 〜 11/9</span></header>
+        <ol>
+          <li>直近10配信の入室数、平均視聴時間、コメント数、新規フォロー数をメモする</li>
+          <li>常連の定位置(曜日・時間・曲)と、新規が最も入った配信の共通点を書き出す</li>
+          <li>同じ歌ジャンルで伸びている3人の、配信の最初の5分を観察する</li>
+        </ol>
+        <p class="gate"><b>次へ進む条件</b>自分の基準値が、数字で言える。きちいけど分析しよう！</p>
+      </article>
+      <article class="phase">
+        <header><span class="tag hi">PHASE 1</span><h3>入口と型を整える</h3><span class="date">11/10 〜 12/7</span></header>
+        <ol>
+          <li>配信時間を固定し、HPとSNSに同じ表記で載せる</li>
+          <li>1配信の型を決めて、4週間同じ型で回す</li>
+          <li>配信の30〜60分前に、その日のメイン曲で15〜30秒のショート動画を出す</li>
+          <li>HPのトップに「TikTok LIVEはこちら・次回の日時・初めての方へ」の枠を足す</li>
+        </ol>
+        <p class="gate"><b>次へ進む条件</b>最初の5分の離脱が減り、コメント率が上がっている。</p>
+      </article>
+      <article class="phase">
+        <header><span class="tag hi">PHASE 2</span><h3>外から人を呼ぶ</h3><span class="date">12/8 〜 1/4</span></header>
+        <ol>
+          <li>ショート動画を週4本。「サビ映え」「リクエスト企画」「ツアーの舞台裏」の3種で回す</li>
+          <li>同じジャンルの歌ライバーとのコラボ配信を月2回行い、相手のリスナーに会う</li>
+          <li>常連に「初見さんへのひと声」をお願いして、歓迎の空気を見せる</li>
+          <li>ツアー会場とファンクラブへの案内を、配信の終盤に決まった台本で入れる</li>
+        </ol>
+        <p class="gate"><b>次へ進む条件</b>新規フォローが基準値の1.5倍以上で、2回目の来場率も測れている。</p>
+      </article>
+      <article class="phase">
+        <header><span class="tag hi">PHASE 3</span><h3>イベントで試して仕組みにする</h3><span class="date">1/5 〜 2/1</span></header>
+        <ol>
+          <li>年始のイベントを「新規獲得の実験場」と位置づけ、バトルは相手を選ぶ</li>
+          <li>良かった施策だけを残し、効かなかったものは止める</li>
+          <li>数字と学びを1枚にまとめて、次の90日の計画に使う</li>
+        </ol>
+        <p class="gate"><b>ゴール</b>「何をすると新規が増えるか」を3つ言える。</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="stream">
+    <span class="kicker">配信の型</span>
+    <h2>最初の5分で、残るかどうかが決まる</h2>
+    <p class="sec-lead">TikTok LIVEは、スクロール中に偶然見つけた人が、数十秒で残るかを決める場です。開始から5〜10分の反応が、その後の見られ方を左右するという解説があります。そこで1配信を3つに分けます。</p>
+    <div class="bar" role="img" aria-label="配信を3つに分けた時間配分の目安。最初の5分、中盤の35分、終盤">
+      <div class="b1">5分</div><div class="b2">中盤</div><div class="b3">終盤</div>
+    </div>
+    <div class="bar-cap" aria-hidden="true"><span>0分</span><span>5分</span><span>40分 → 終了</span></div>
+    <div class="stack">
+      <div class="card">
+        <span class="time">0 〜 5分</span>
+        <h3>盛り上がる曲から入る</h3>
+        <p>あいさつより先に歌います。タイトルに「今日の1曲目」と書いておくと、来た人が何の配信か一目で分かります。</p>
+      </div>
+      <div class="card">
+        <span class="time">5 〜 40分</span>
+        <h3>みんなで参加する中盤</h3>
+        <p>「次はAとBどっち?」のように、1回のコメントで参加できる選択式にします。初見さんの名前を呼び、曲の合間に必ず1回、話しかけます。</p>
+      </div>
+      <div class="card">
+        <span class="time">40分 〜 終了</span>
+        <h3>また来る理由を渡す</h3>
+        <p>次回の日時と曲を予告します。リクエスト、フォロー、ツアー、ファンクラブを30秒の決まった台本で案内します。</p>
+      </div>
+      <div class="card">
+        <h3>歌ライバーならではの工夫</h3>
+        <ul class="dots">
+          <li>曲の前に「この曲は〇〇な人に」と添えて、初見の人が自分のことだと思えるようにする</li>
+          <li>定番曲と、季節やトレンドの曲を3:1で混ぜて、検索から来る人も拾う</li>
+          <li>配信タイトルは「歌」「リクエスト」「ジャンル」など、内容が一目で分かる言葉にする</li>
+          <li>常連が新規に優しくしてくれた場面を、感謝として名前を出して伝える</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="outside">
+    <span class="kicker">TikTokの外</span>
+    <h2>HPとSNSを「入口」に変える</h2>
+    <p class="sec-lead">公式HPには、スケジュール、プロフィール、CD、ショップ、ファンクラブ、出演依頼、ライブ予約、クラファンまで揃っています。足りないのは、TikTok LIVEの視聴者を迎える専用の入口です。</p>
+    <div class="card" style="margin-top:20px">
+      <ul class="rows">
+        <li><span class="tag hi">高</span><div><b>HPトップに新しい枠を作る</b><span class="d">「TikTok LIVE 次回〇/〇 20:00」と「初めての方へ(3行)」を一番上に置く。</span></div></li>
+        <li><span class="tag hi">高</span><div><b>スケジュールをひとつにまとめる</b><span class="d">ライブ(ツアー)の日程に、TikTok LIVEの配信枠も同じ表に載せる。</span></div></li>
+        <li><span class="tag">中</span><div><b>初見さん用ページを作る</b><span class="d">代表曲3曲、配信の楽しみ方、コメントの仕方を1ページにまとめて、プロフィールのリンクに設定する。</span></div></li>
+        <li><span class="tag">中</span><div><b>ツアーと配信を往復させる</b><span class="d">会場では「TikTokで会えます」、配信では「会場で会えます」を同じ台本で案内する。</span></div></li>
+        <li><span class="tag">中</span><div><b>新曲を使い回す</b><span class="d">「Dream Time」「Fly High」のサビを、ショート動画と配信の盛り上がる曲の両方に使う。</span></div></li>
+      </ul>
+    </div>
+    <p class="note">新しく来た人にとっては、次に会える場所と時間が分かることが、最初のフォローの理由になります。</p>
+  </section>
+
+  <section id="event">
+    <span class="kicker">イベント戦略</span>
+    <h2>TOP3の壁は「新規の流入量」で越える</h2>
+    <p class="sec-lead">上位との差を常連の応援だけで埋めると、消耗します。イベントを「順位を追う場」と「新規を迎える場」に分けて、期間中に入口を広げます。</p>
+    <ol class="line">
+      <li><span class="when">開始前の1週間</span>イベントの告知ショート動画を毎日1本。ファンの応援を前倒しで集める。</li>
+      <li><span class="when">初日と中盤</span>バトルは、自分より少し大きい相手のピーク時間を選ぶ。相手のリスナーに見てもらえる。同じ規模の歌ライバーを優先する。</li>
+      <li><span class="when">ラスト48時間</span>常連の熱量を使うのはここだけ。新規には応援の仕方を1枚で見せて、無理のない参加をすすめる。</li>
+      <li><span class="when">終了後72時間</span>イベント中に来た新規へお礼を伝え、ショート動画でもう一度来てもらう。</li>
+    </ol>
+    <p class="note">新規が増えれば、上位との差も縮まります。順位とあわせて「イベント期間中の新規フォロー数」も成果として記録しましょう。</p>
+  </section>
+
+  <section id="kpi">
+    <span class="kicker">数字で見る</span>
+    <h2>追う数字は5つだけ</h2>
+    <p class="sec-lead">目標の数字は、PHASE 0で取った基準値をもとに決めます。</p>
+    <div class="card" style="margin-top:20px">
+      <div class="kpi"><b>配信開始10分の入室数</b><span class="goal">基準値の1.3倍</span><span class="d">入口の強さ</span></div>
+      <div class="kpi"><b>平均視聴時間</b><span class="goal">基準値の1.2倍</span><span class="d">残る力</span></div>
+      <div class="kpi"><b>コメント数 ÷ 視聴者数</b><span class="goal">基準値より上げる</span><span class="d">やり取りの質</span></div>
+      <div class="kpi"><b>週の新規フォロー数</b><span class="goal">基準値の1.5倍</span><span class="d">新規の獲得</span></div>
+      <div class="kpi"><b>新規の2回目の来場率</b><span class="goal">まず測る</span><span class="d">戻る力</span></div>
+    </div>
+    <div class="card review">
+      <h3>週1回、15分の振り返り</h3>
+      <ol>
+        <li>今週いちばん新規が入った配信はどれか。最初の5分に何をしたか。</li>
+        <li>離脱が多かった曲や場面はどこか。</li>
+        <li>来週試す変更を「1つだけ」決める。</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="todo">
+    <span class="kicker">今週やること ・ 11/3 〜 11/9</span>
+    <h2>まずはこの5つ</h2>
+    <p class="sec-lead">終わったらタップしてチェックしましょう。このブラウザに記憶されます。</p>
+    <div class="progress"><div class="meter" aria-hidden="true"><i id="meter"></i></div><output id="count" for="t1 t2 t3 t4 t5">0 / 5</output></div>
+    <div class="todo">
+      <div><input type="checkbox" id="t1"><label for="t1"><span class="box"></span><span class="t">直近10配信の入室数・平均視聴時間・コメント数・新規フォロー数を表にする</span></label></div>
+      <div><input type="checkbox" id="t2"><label for="t2"><span class="box"></span><span class="t">新規が最も入った配信を1つ選び、最初の5分に何をしたかを書き出す</span></label></div>
+      <div><input type="checkbox" id="t3"><label for="t3"><span class="box"></span><span class="t">来週からの配信枠を週3つ決め、HPとSNSに同じ表記で載せる</span></label></div>
+      <div><input type="checkbox" id="t4"><label for="t4"><span class="box"></span><span class="t">盛り上がる曲を3曲決め、配信前に出すショート動画を1本作る</span></label></div>
+      <div><input type="checkbox" id="t5"><label for="t5"><span class="box"></span><span class="t">HPトップに入れる「次回TikTok LIVE・初めての方へ」の文面を下書きする</span></label></div>
+    </div>
+  </section>
+
+  <section id="sources">
+    <span class="kicker">参考にした情報</span>
+    <h2>出どころ</h2>
+    <ul class="src">
+      <li><a href="https://www.kinuyo-music.com/" target="_blank" rel="noopener">Kinuyo 公式HP</a>:お知らせとメニュー構成を確認(2026年11月3日)</li>
+      <li><a href="https://ttcalculator.net/blog/tiktok-live-ranking-changes-2026/" target="_blank" rel="noopener">TT Calculator:TikTok LIVEのランキング変更(2026年)</a>:ギフト額より継続視聴とやり取りの質を重視する流れ</li>
+      <li><a href="https://ttcalculator.net/learn/get-more-viewers-tiktok-live/" target="_blank" rel="noopener">TT Calculator:How to Get More Viewers on TikTok Live</a>:開始直後の反応、継続視聴、配信の一貫性、タイトルの分かりやすさ</li>
+      <li><a href="https://streamscharts.com/news/tikTok-live-2026-ultimate-guide-viral-growth-and-platform-limits" target="_blank" rel="noopener">Streams Charts:TikTok Live 2026ガイド</a>:偶然の発見が中心で、継続視聴が重視される傾向</li>
+    </ul>
+    <footer>上記は民間サイトの解説で、TikTok公式の発表ではありません。傾向をつかむ参考としてご覧ください。</footer>
+  </section>
+</main>
+
+<script>
+(function () {
+  var ids = ["t1", "t2", "t3", "t4", "t5"];
+  var key = "kinuyo-roadmap-todo";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}") || {}; } catch (e) { saved = {}; }
+  var meter = document.getElementById("meter");
+  var count = document.getElementById("count");
+  function render() {
+    var n = 0;
+    ids.forEach(function (id) { if (document.getElementById(id).checked) n++; });
+    count.textContent = n + " / " + ids.length;
+    meter.style.width = (n / ids.length * 100) + "%";
+  }
+  ids.forEach(function (id) {
+    var el = document.getElementById(id);
+    el.checked = !!saved[id];
+    el.addEventListener("change", function () {
+      saved[id] = el.checked;
+      try { localStorage.setItem(key, JSON.stringify(saved)); } catch (e) {}
+      render();
+    });
+  });
+  render();
+})();
+</script>
+
+</body></html>
