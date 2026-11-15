@@ -1,0 +1,908 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Kinuyo リスナー増加ロードマップ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 3ページ(タブ)。①差を知る ②ナレッジを貯める ③サポート力をつける。白地に、TikTokのシアンと赤。紫はKinuyoさんの印として、少しだけ。 */
+:root {
+  --bg: #ffffff;
+  --soft: #f4f6f8;
+  --ink: #161823;
+  --muted: #565a69;
+  --line: #e2e4ea;
+  --cyan: #25f4ee;
+  --cyan-tint: #e3fffe;
+  --cyan-ink: #00716d;
+  --red: #fe2c55;
+  --red-fill: #e0214a;
+  --red-tint: #ffeaf0;
+  --red-ink: #c4143a;
+  --kinuyo: #7a3fd1;
+  --kinuyo-soft: #b17bff;
+  --kinuyo-tint: #f3ebff;
+  --font-display: "Dela Gothic One", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  padding-block: 0 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-text-size-adjust: 100%;
+  word-break: auto-phrase;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  z-index: 30;
+}
+.wrap { max-width: 760px; margin-inline: auto; }
+a { color: var(--cyan-ink); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 8px; }
+h1, h2, h3, p, ul, ol { margin: 0; padding: 0; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.4; }
+p, li { text-wrap: pretty; }
+.todo-list b, .metrics b, .where b, .check b, .ck .tx b, .steps3 b, .tl b, .fill, .gaprow h3 { text-wrap: balance; }
+ul, ol { list-style: none; }
+
+/* 上のタブ */
+.topbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.tabs { display: flex; gap: 6px; max-width: 520px; margin-inline: auto; padding-block: 8px; }
+.tabs a {
+  flex: 1 1 0; min-width: 0; text-align: center; white-space: nowrap;
+  padding: 9px 4px; border-radius: 999px; background: var(--soft); color: var(--ink);
+  font-weight: 900; font-size: 0.84rem; text-decoration: none; line-height: 1.3;
+}
+.tabs a b { font-family: var(--font-display); font-weight: 400; margin-right: 3px; }
+.tabs a[aria-current="page"] { background: var(--ink); color: #fff; }
+.tabs a[data-view="knowledge"][aria-current="page"] { background: var(--cyan); color: var(--ink); }
+.tabs a[data-view="support"][aria-current="page"] { background: var(--red-fill); color: #fff; }
+
+/* 表紙・ページの頭 */
+.hero, .page-head {
+  display: grid; gap: 14px; margin-top: 18px; padding: 22px 18px;
+  border: 1px solid var(--line); border-radius: 24px;
+  background: linear-gradient(135deg, var(--cyan-tint) 0%, #fff 52%, var(--red-tint) 100%);
+}
+.page-head.k { background: linear-gradient(135deg, var(--cyan-tint) 0%, #fff 70%); }
+.page-head.s { background: linear-gradient(135deg, #fff 30%, var(--red-tint) 100%); }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px; width: fit-content;
+  background: var(--ink); color: #fff; font-weight: 900; font-size: 0.76rem; letter-spacing: 0.08em;
+  padding: 4px 12px 4px 10px; border-radius: 999px; line-height: 1.5;
+}
+.eyebrow i { width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: 0.3; transform: scale(0.8); } }
+.glitch { font-family: var(--font-display); font-weight: 400; line-height: 1.35; text-shadow: -1.5px 0 var(--cyan), 1.5px 0 var(--red); }
+h1.glitch { font-size: clamp(1.7rem, 7.6vw, 2.6rem); }
+.glitch em { font-style: normal; background: linear-gradient(transparent 62%, var(--cyan) 62%); padding-inline: 2px; }
+.glitch em.r { background: linear-gradient(transparent 62%, #ffb8c8 62%); }
+.lead { color: var(--muted); font-size: 1.02rem; }
+.lead b { color: var(--ink); }
+
+/* ストーリー(3つの流れ) */
+.story { display: grid; gap: 8px; counter-reset: st; }
+.story li {
+  counter-increment: st; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: center;
+  background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 10px 14px 10px 10px;
+}
+.story li::before {
+  content: counter(st); width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center;
+  font-family: var(--font-display); background: var(--c); color: var(--on);
+}
+.story .a { --c: var(--ink); --on: #fff; }
+.story .b { --c: var(--cyan); --on: var(--ink); }
+.story .c { --c: var(--red-fill); --on: #fff; }
+.story b { display: block; line-height: 1.45; }
+.story span { display: block; color: var(--muted); font-size: 0.86rem; line-height: 1.5; }
+.here { font-style: normal; font-size: 0.68rem; font-weight: 900; background: var(--ink); color: #fff; padding: 1px 8px; border-radius: 999px; margin-left: 6px; letter-spacing: 0.06em; vertical-align: 2px; }
+
+/* セクション見出し */
+.block { padding-block: 44px 0; scroll-margin-top: 72px; }
+.kicker {
+  display: inline-block; font-weight: 900; font-size: 0.76rem; letter-spacing: 0.12em; line-height: 1.6;
+  padding: 2px 12px; border-radius: 999px; margin-bottom: 10px; background: var(--c, var(--ink)); color: var(--on, #fff);
+}
+.kicker.k { --c: var(--cyan); --on: var(--ink); }
+.kicker.s { --c: var(--red-fill); --on: #fff; }
+h2.h { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.35rem, 6vw, 1.8rem); }
+.sec-lead { color: var(--muted); margin-top: 10px; }
+.sub-h { margin-top: 28px; font-size: 1.1rem; font-weight: 900; }
+.tag { display: inline-block; flex: none; font-weight: 900; font-size: 0.72rem; letter-spacing: 0.06em; padding: 2px 10px; border-radius: 999px; line-height: 1.6; white-space: nowrap; }
+.tag.k { background: var(--cyan); color: var(--ink); }
+.tag.s { background: var(--red-fill); color: #fff; }
+
+/* 大手事務所との差 */
+.gap { display: grid; gap: 14px; margin-top: 18px; }
+.gaprow { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: #fff; }
+.gaprow > header { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--soft); }
+.gaprow h3 { font-size: 1.02rem; font-weight: 900; }
+.vs { display: grid; grid-template-columns: minmax(0, 1fr); }
+.side { padding: 12px 14px; }
+.side small { display: block; font-weight: 900; font-size: 0.74rem; letter-spacing: 0.08em; margin-bottom: 2px; color: var(--muted); }
+.side p { font-size: 0.97rem; line-height: 1.65; }
+.side.me { background: var(--kinuyo-tint); }
+.side.me small { color: var(--kinuyo); }
+.fill {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 14px;
+  font-weight: 900; font-size: 0.92rem; text-decoration: none; line-height: 1.5; border-top: 1px solid var(--line);
+}
+.fill::after { content: "→"; flex: none; }
+.fill.k { background: var(--cyan-tint); color: var(--cyan-ink); }
+.fill.s { background: var(--red-tint); color: var(--red-ink); }
+@media (min-width: 640px) {
+  .vs { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .side.big { border-right: 1px solid var(--line); }
+}
+.sowhat {
+  margin-top: 18px; padding: 16px 18px; border-radius: 18px; background: var(--cyan-tint);
+  border-left: 6px solid var(--cyan); font-weight: 900; font-size: 1.05rem; line-height: 1.7;
+}
+.sowhat small { display: block; font-size: 0.78rem; letter-spacing: 0.1em; color: var(--cyan-ink); margin-bottom: 2px; }
+
+/* 2つの柱 */
+.pillars { display: grid; gap: 18px; margin-top: 18px; }
+.pillar {
+  display: grid; gap: 10px; align-content: start; padding: 18px; background: #fff;
+  border: 2px solid var(--ink); border-radius: 20px; box-shadow: 5px 5px 0 var(--c);
+}
+.pillar.k { --c: var(--cyan); }
+.pillar.s { --c: var(--red); }
+.pillar > .tag { justify-self: start; }
+.pillar h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.4rem; }
+.pillar p { color: var(--muted); font-size: 0.97rem; }
+.mult { margin-top: 24px; display: grid; gap: 8px; justify-items: center; font-weight: 900; }
+.mult-row { display: flex; align-items: stretch; justify-content: center; gap: 6px; width: 100%; }
+.mult-row > div { flex: 1 1 0; min-width: 0; text-align: center; padding: 8px 6px; border-radius: 14px; background: var(--soft); border: 1px solid var(--line); line-height: 1.4; font-size: 0.95rem; text-wrap: balance; }
+.mult-row > span { align-self: center; flex: none; }
+.mult small { display: block; font-size: 0.68rem; letter-spacing: 0.04em; }
+.mult .s small { color: var(--red-ink); }
+.mult .k small { color: var(--cyan-ink); }
+.mult-eq { font-size: 1.05rem; }
+.mult-cap { margin-top: 10px; text-align: center; color: var(--muted); font-size: 0.88rem; }
+
+/* STEP */
+.step { padding-block: 40px 0; scroll-margin-top: 72px; --c: var(--cyan); --on: var(--ink); --t: var(--cyan-ink); }
+#s2 { --c: var(--ink); --on: #fff; --t: var(--ink); }
+#s3 { --c: var(--red-fill); --on: #fff; --t: var(--red-ink); }
+.step-head { display: flex; align-items: center; gap: 14px; }
+.step-head h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 7vw, 2.1rem); }
+.num {
+  flex: none; width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; text-align: center;
+  background: var(--c); color: var(--on); font-family: var(--font-display); line-height: 1.1;
+}
+.num small { display: block; font-family: var(--font-body); font-weight: 900; font-size: 0.6rem; letter-spacing: 0.1em; }
+.num span { font-size: 1.7rem; }
+.goal { margin-top: 14px; font-size: 1.08rem; font-weight: 900; }
+.goal em { font-style: normal; background: linear-gradient(transparent 62%, var(--cyan-tint) 62%); box-shadow: inset 0 -0.45em 0 var(--cyan-tint); }
+.grp { margin-top: 24px; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--muted); font-weight: 900; display: flex; align-items: center; gap: 8px; }
+.grp::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+.todo-list { display: grid; gap: 10px; margin-top: 14px; counter-reset: a; }
+.todo-list li {
+  counter-increment: a; display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; align-items: start;
+  background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px;
+}
+.todo-list li::before {
+  content: counter(a); width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--c); color: var(--on); font-weight: 900; font-size: 0.95rem; line-height: 1;
+}
+.todo-list b { display: block; font-size: 1.04rem; line-height: 1.55; }
+.todo-list span { display: block; color: var(--muted); font-size: 0.92rem; line-height: 1.65; margin-top: 2px; }
+q { color: var(--cyan-ink); quotes: "「" "」"; font-weight: 700; }
+#s3 q { color: var(--red-ink); }
+#s2 q { color: var(--ink); }
+
+.bridge {
+  margin-top: 16px; padding: 14px 16px; border-radius: 16px; background: var(--red-tint); border: 1px dashed var(--red);
+  font-size: 0.95rem; line-height: 1.7;
+}
+.bridge b { color: var(--red-ink); }
+.bridge a { font-weight: 900; color: var(--red-ink); }
+
+.where { display: grid; gap: 10px; margin-top: 14px; }
+.where li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px; align-items: start; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 14px; }
+.where .pl {
+  font-weight: 900; font-size: 0.78rem; white-space: nowrap; text-align: center; padding: 6px 4px; line-height: 1.3;
+  border-radius: 10px; background: var(--red-tint); color: var(--red-ink);
+}
+.where b { display: block; font-size: 1.02rem; line-height: 1.55; }
+.where span.d { display: block; color: var(--muted); font-size: 0.92rem; line-height: 1.65; margin-top: 2px; }
+
+.check {
+  margin-top: 14px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;
+  background: var(--soft); border: 1.5px dashed var(--t); border-radius: 14px; padding: 12px 16px;
+}
+.check small { font-weight: 900; color: var(--t); letter-spacing: 0.08em; font-size: 0.75rem; }
+.check b { font-size: 1rem; line-height: 1.5; }
+.check .t { margin-left: auto; font-family: var(--font-display); color: var(--t); font-size: 0.9rem; }
+
+/* チャットの見本 */
+.chat { margin-top: 16px; background: var(--soft); border: 1px solid var(--line); border-radius: 18px; padding: 14px; }
+.chat .cap { font-size: 0.8rem; font-weight: 900; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 10px; }
+.chat ul { display: grid; gap: 8px; }
+.chat li { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 10px; align-items: start; background: #fff; border-radius: 14px; padding: 8px 12px 8px 8px; }
+.chat .av { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-weight: 900; font-size: 0.85rem; background: #d9dce4; color: var(--ink); }
+.chat .host .av { background: linear-gradient(140deg, var(--kinuyo-soft), var(--kinuyo)); color: #fff; }
+.chat small { display: block; font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+.chat .host small { color: var(--kinuyo); font-weight: 700; }
+.chat p { font-size: 0.98rem; line-height: 1.55; }
+.chat .ans { font-weight: 900; color: var(--cyan-ink); font-size: 1.1rem; }
+.chat .tagnew { background: var(--cyan); color: var(--ink); font-weight: 900; font-size: 0.65rem; padding: 0 6px; border-radius: 999px; margin-left: 6px; }
+
+/* STEP3の時間の流れ */
+.tl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
+.tl li { position: relative; background: var(--red-tint); border-radius: 14px; padding: 10px 6px; text-align: center; display: grid; gap: 2px; }
+.tl li:not(:last-child)::after {
+  content: ""; position: absolute; right: -9px; top: 50%; width: 10px; height: 10px; z-index: 2;
+  border-top: 3px solid var(--red-fill); border-right: 3px solid var(--red-fill); transform: translateY(-50%) rotate(45deg);
+}
+.tl small { color: var(--red-ink); font-size: 0.72rem; font-weight: 900; line-height: 1.4; }
+.tl b { font-size: 0.88rem; line-height: 1.4; }
+
+/* 数字の見方 */
+.metrics { display: grid; gap: 10px; margin-top: 16px; }
+.metrics li { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 12px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; }
+.metrics .chip { text-align: center; font-weight: 900; font-size: 0.75rem; padding: 6px 4px; border-radius: 10px; background: var(--c); color: var(--on); line-height: 1.3; }
+.metrics .m1 { --c: var(--cyan); --on: var(--ink); }
+.metrics .m2 { --c: var(--ink); --on: #fff; }
+.metrics .m3 { --c: var(--red-fill); --on: #fff; }
+.metrics b { display: block; font-size: 1.02rem; line-height: 1.5; }
+.metrics span.d { display: block; color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
+.how { --c: var(--cyan); --on: var(--ink); }
+.formula { margin-top: 12px; background: var(--cyan-tint); border-radius: 14px; padding: 12px 16px; font-weight: 900; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.formula small { display: block; color: var(--cyan-ink); font-size: 0.75rem; letter-spacing: 0.08em; margin-bottom: 2px; }
+.eg-cap { margin-top: 22px; font-size: 0.85rem; font-weight: 900; color: var(--muted); letter-spacing: 0.06em; }
+.eg { margin-top: 8px; display: grid; gap: 8px; }
+.eg li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+.eg b { font-size: 1rem; line-height: 1.4; }
+.eg .vals { grid-column: 1 / -1; color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.eg em { font-style: normal; font-weight: 900; font-size: 0.88rem; padding: 2px 10px; border-radius: 999px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.eg .up { background: var(--cyan); color: var(--ink); }
+.eg .flat { background: var(--soft); color: var(--muted); border: 1px solid var(--line); }
+.eg .down { background: var(--red-fill); color: #fff; }
+.note { margin-top: 14px; font-size: 0.9rem; color: var(--muted); }
+.note b { color: var(--ink); }
+
+/* コピー・チェック・ボタン */
+.script { margin-top: 12px; background: var(--soft); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: grid; gap: 12px; }
+.script p { font-weight: 500; }
+.copy {
+  flex: none; white-space: nowrap; font: inherit; font-weight: 900; font-size: 0.85rem; color: var(--ink);
+  background: var(--cyan); border: 0; border-radius: 999px; padding: 8px 16px; min-height: 40px; cursor: pointer;
+}
+.script .copy { justify-self: start; }
+.btn {
+  display: flex; justify-content: center; align-items: center; width: 100%; min-height: 54px; padding: 12px 20px;
+  background: var(--red-fill); color: #fff; font-weight: 900; font-size: 1.05rem; border-radius: 999px; text-decoration: none;
+  box-shadow: -3px 3px 0 var(--cyan); text-align: center; line-height: 1.4;
+}
+.btn.line { background: #fff; color: var(--ink); border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--cyan); }
+.btn.line.s { box-shadow: 3px 3px 0 var(--red); }
+.next { margin-top: 40px; display: grid; gap: 8px; }
+.next p { text-align: center; color: var(--muted); font-size: 0.88rem; }
+
+.progress { margin-top: 16px; display: flex; align-items: center; gap: 12px; }
+.meter { flex: 1; height: 10px; background: var(--soft); border-radius: 999px; overflow: hidden; border: 1px solid var(--line); }
+.meter i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--cyan), var(--red)); transition: width 0.3s; }
+.progress output { font-weight: 900; font-variant-numeric: tabular-nums; min-width: 3em; text-align: right; }
+.checks { display: grid; gap: 10px; margin-top: 14px; }
+.ck { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 16px; }
+.ck input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.ck label { display: flex; gap: 14px; align-items: flex-start; cursor: pointer; padding: 14px 16px; }
+.box { flex: none; width: 26px; height: 26px; border-radius: 8px; border: 2px solid var(--ink); display: grid; place-items: center; margin-top: 1px; background: #fff; }
+.box::after { content: ""; width: 12px; height: 7px; border-left: 3px solid var(--ink); border-bottom: 3px solid var(--ink); transform: rotate(-45deg) translate(1px, -1px); opacity: 0; }
+.ck .tx b { display: block; font-size: 1.02rem; line-height: 1.5; }
+.ck .tx small { display: block; color: var(--muted); font-size: 0.9rem; line-height: 1.65; margin-top: 2px; }
+.ck .tx .tag { margin-bottom: 4px; }
+.ck input:checked + label .box { background: var(--cyan); border-color: var(--ink); }
+.ck input:checked + label .box::after { opacity: 1; }
+.ck input:checked + label .tx b { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--red); }
+.ck:has(input:checked) { background: var(--cyan-tint); border-color: var(--cyan); }
+.ck input:focus-visible + label { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 16px; }
+.ck .more { display: inline-block; margin: 0 16px 14px 56px; font-weight: 900; font-size: 0.9rem; }
+
+/* 切り抜き部隊(Kinuyoさん向けのコツ) */
+.dots { display: grid; gap: 10px; margin-top: 14px; }
+.dots li { position: relative; padding-left: 22px; }
+.dots li::before { content: ""; position: absolute; left: 2px; top: 0.75em; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); }
+.dots.red li::before { background: var(--red); }
+.tips { --c: var(--red-fill); --on: #fff; }
+
+/* リスナーに見せる部分 */
+.recruit { margin-top: 44px; scroll-margin-top: 72px; padding: 18px 16px 28px; border: 2px solid var(--kinuyo-soft); border-radius: 28px; background: linear-gradient(180deg, var(--kinuyo-tint) 0%, #fff 38%); }
+.rc-note { font-size: 0.82rem; font-weight: 900; color: var(--kinuyo); letter-spacing: 0.04em; line-height: 1.6; }
+.rc-hero { display: grid; gap: 14px; padding-block: 18px 4px; }
+.rc-hero .eyebrow { background: var(--kinuyo); }
+.who { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 44px; height: 44px; border-radius: 50%; flex: none; display: grid; place-items: center; font-family: var(--font-display); font-size: 1.2rem; color: #fff; background: linear-gradient(140deg, var(--kinuyo-soft), var(--kinuyo)); box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--kinuyo-soft); }
+.who b { display: block; line-height: 1.3; }
+.who span { color: var(--muted); font-size: 0.85rem; line-height: 1.4; display: block; }
+.ask { margin-top: 20px; background: #fff; border: 2px solid var(--kinuyo); border-radius: 20px; padding: 20px; display: grid; gap: 12px; box-shadow: 5px 5px 0 var(--kinuyo-soft); }
+.ask h3 { font-size: 1.25rem; font-weight: 900; }
+.ask p { font-size: 1.02rem; }
+.ask .sign { color: var(--kinuyo); font-weight: 900; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.chips li { background: #fff; border: 1px solid var(--kinuyo-soft); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 0.95rem; line-height: 1.4; }
+.chips li::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); margin-right: 8px; }
+.steps3 { display: grid; gap: 12px; margin-top: 14px; counter-reset: s; }
+.steps3 > li { counter-increment: s; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 16px; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: start; }
+.steps3 > li::before { content: counter(s); width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; font-family: var(--font-display); font-size: 1.4rem; background: var(--c); color: var(--on); }
+.steps3 > li:nth-child(1) { --c: var(--cyan); --on: var(--ink); }
+.steps3 > li:nth-child(2) { --c: var(--ink); --on: #fff; }
+.steps3 > li:nth-child(3) { --c: var(--red-fill); --on: #fff; }
+.steps3 b { display: block; font-size: 1.08rem; line-height: 1.5; }
+.steps3 .d { display: block; color: var(--muted); font-size: 0.92rem; line-height: 1.65; margin-top: 2px; }
+.copyrows { grid-column: 1 / -1; display: grid; gap: 10px; }
+.copyrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 0; background: var(--soft); border: 1px solid var(--line); border-radius: 14px; padding: 6px 6px 6px 16px; }
+.copyrow code { font-family: var(--font-body); font-weight: 900; font-size: 1.02rem; color: var(--ink); overflow-wrap: anywhere; min-width: 0; user-select: all; }
+.cta { margin-top: 36px; display: grid; gap: 14px; }
+.cta p { color: var(--muted); text-align: center; font-size: 0.9rem; }
+
+/* 参考サイト */
+.refs { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.82rem; line-height: 1.8; }
+.refs summary { cursor: pointer; font-weight: 900; font-size: 0.9rem; color: var(--ink); padding-block: 4px; }
+.refs div { display: grid; gap: 8px; margin-top: 8px; }
+.refs a { font-weight: 700; }
+
+/* ステップの目次(ページの頭) */
+.flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.flow a {
+  position: relative; text-decoration: none; color: var(--ink); background: #fff;
+  border: 1px solid var(--line); border-radius: 16px; padding: 10px 4px 12px; text-align: center; display: grid;
+}
+.flow a:not(:last-child)::after {
+  content: ""; position: absolute; right: -9px; top: 50%; width: 10px; height: 10px; z-index: 2;
+  border-top: 3px solid var(--ink); border-right: 3px solid var(--ink); transform: translateY(-50%) rotate(45deg);
+}
+.flow small { font-weight: 900; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--cyan-ink); }
+.flow a:nth-child(2) small { color: var(--ink); }
+.flow a:nth-child(3) small { color: var(--red-ink); }
+.flow b { font-family: var(--font-display); font-weight: 400; font-size: 1.2rem; line-height: 1.35; }
+.flow span { color: var(--muted); font-size: 0.78rem; line-height: 1.4; }
+.loop { color: var(--muted); font-size: 0.9rem; }
+.loop b { color: var(--cyan-ink); }
+.rc-title { font-size: clamp(1.9rem, 8.6vw, 2.8rem); }
+.rc-h { margin-top: 32px; font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; line-height: 1.4; }
+.cta .rc-h { margin-top: 0; }
+
+@media (max-width: 400px) {
+  body { font-size: 16px; }
+  .num { width: 56px; height: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow i { animation: none; }
+  .meter i { transition: none; }
+}
+</style>
+
+<nav class="topbar" aria-label="ページの切り替え">
+  <div class="tabs">
+    <a href="#gap" data-view="gap" aria-current="page"><b>1</b>差を知る</a>
+    <a href="#knowledge" data-view="knowledge"><b>2</b>ナレッジ</a>
+    <a href="#support" data-view="support"><b>3</b>サポート力</a>
+  </div>
+</nav>
+
+<main class="wrap" lang="ja">
+
+  <!-- ページ1: 差を知る -->
+  <div id="v-gap" class="view" data-view="gap">
+    <header class="hero">
+      <span class="eyebrow"><i></i>Kinuyo💜 TikTok LIVE ロードマップ</span>
+      <h1 class="glitch">大手事務所との差は、<br><em>ナレッジ</em>と<em class="r">サポート力</em></h1>
+      <p class="lead">歌の実力ではなく、<b>「うまくいくやり方の貯金」</b>と<b>「動いてくれる手の数」</b>の差です。だから、この2つを自分たちで作っていきます。</p>
+      <ol class="story" aria-label="このページの流れ">
+        <li class="a"><div><b>差を知る<em class="here">いまここ</em></b><span>大手事務所が持っているものを見る</span></div></li>
+        <li class="b"><div><b>ナレッジを貯める</b><span>入口・滞在・リピートの「型」と、数字の見方</span></div></li>
+        <li class="c"><div><b>サポート力をつける</b><span>入口をふやす・切り抜き部隊をつくる</span></div></li>
+      </ol>
+    </header>
+
+    <section class="block" id="gaps">
+      <span class="kicker">1 差を知る</span>
+      <h2 class="h">大手事務所だと、こうなっている</h2>
+      <p class="sec-lead">日本の紹介記事で、ライバー事務所のサポートとして挙げられている内容です。事務所ごとに差はあります。</p>
+
+      <div class="gap">
+        <article class="gaprow">
+          <header><span class="tag k">ナレッジ</span><h3>配信のコツが共有される</h3></header>
+          <div class="vs">
+            <div class="side big"><small>大手事務所だと</small><p>「ノウハウの共有」や配信技術のサポートがあり、うまくいったやり方が全員に回ります。</p></div>
+            <div class="side me"><small>いまのKinuyoさん</small><p>5年分の経験は、本人の頭の中。書き残して使い回せる「型」には、まだなっていません。</p></div>
+          </div>
+          <a class="fill k" href="#knowledge" data-go="knowledge" data-target="s1">ページ2で「型」をつくる</a>
+        </article>
+
+        <article class="gaprow">
+          <header><span class="tag k">ナレッジ</span><h3>数字を見て、改善してくれる</h3></header>
+          <div class="vs">
+            <div class="side big"><small>大手事務所だと</small><p>配信データを見て、パフォーマンスの分析や内容の改善まで支えてくれます。</p></div>
+            <div class="side me"><small>いまのKinuyoさん</small><p>増えた・減ったを、毎週同じやり方で見る決まりが、まだありません。</p></div>
+          </div>
+          <a class="fill k" href="#knowledge" data-go="knowledge" data-target="numbers">ページ2で数字の見方を決める</a>
+        </article>
+
+        <article class="gaprow">
+          <header><span class="tag k">ナレッジ</span><h3>学ぶ場がある</h3></header>
+          <div class="vs">
+            <div class="side big"><small>大手事務所だと</small><p>初心者向けの育成プログラムや、イベント対策の講習会が開かれます。</p></div>
+            <div class="side me"><small>いまのKinuyoさん</small><p>試して学ぶのは、基本ひとり。結果を残す場所がないと、次の週に活きません。</p></div>
+          </div>
+          <a class="fill k" href="#knowledge" data-go="knowledge" data-target="note">ページ2でナレッジノートを書く</a>
+        </article>
+
+        <article class="gaprow">
+          <header><span class="tag s">サポート力</span><h3>相談できる担当者がいる</h3></header>
+          <div class="vs">
+            <div class="side big"><small>大手事務所だと</small><p>専属・担当のマネージャーが、配信の方針や時間、企画、スケジュールまで相談に乗ります。</p></div>
+            <div class="side me"><small>いまのKinuyoさん</small><p>考える・決める・動くが、本人に集中しがち。手が足りません。</p></div>
+          </div>
+          <a class="fill s" href="#support" data-go="support" data-target="squad">ページ3で切り抜き部隊をつくる</a>
+        </article>
+
+        <article class="gaprow">
+          <header><span class="tag s">サポート力</span><h3>SNSで宣伝してもらえる</h3></header>
+          <div class="vs">
+            <div class="side big"><small>大手事務所だと</small><p>アカウントの設計や、ふだんの投稿まで、事務所が手伝ってくれます。</p></div>
+            <div class="side me"><small>いまのKinuyoさん</small><p>入口はTikTokが中心。公式HPには、TikTok LIVEの案内がありません(2026年11月14日に確認)。</p></div>
+          </div>
+          <a class="fill s" href="#support" data-go="support" data-target="doors">ページ3でTikTokの外に入口をふやす</a>
+        </article>
+
+        <article class="gaprow">
+          <header><span class="tag s">サポート力</span><h3>コラボで、初めての人に会える</h3></header>
+          <div class="vs">
+            <div class="side big"><small>大手事務所だと</small><p>事務所内のライバー同士でコラボして、初めて見る人(初見リスナー)に出会えます。</p></div>
+            <div class="side me"><small>いまのKinuyoさん</small><p>新しい人との出会いは、自分の配信の中が中心。外で出会う仕組みが足りません。</p></div>
+          </div>
+          <a class="fill s" href="#support" data-go="support" data-target="squad">ページ3でリスナーを「外の仲間」にする</a>
+        </article>
+      </div>
+
+      <p class="sowhat"><small>つまり</small>差は、歌や人柄ではなく「仕組み」の差。仕組みなら、これから作れます。</p>
+    </section>
+
+    <section class="block" id="pillars">
+      <span class="kicker">だから</span>
+      <h2 class="h">この2つを、つけていく</h2>
+      <div class="pillars">
+        <article class="pillar k">
+          <span class="tag k">ナレッジ</span>
+          <h3>貯める</h3>
+          <p>うまくいくやり方を「型」にして、数字で確かめて、ノートに残します。</p>
+          <ul class="dots"><li>入口・滞在・リピートの「型」</li><li>数字の見方</li><li>週3行のナレッジノート</li></ul>
+          <a class="btn line" href="#knowledge" data-go="knowledge">ページ2で見る →</a>
+        </article>
+        <article class="pillar s">
+          <span class="tag s">サポート力</span>
+          <h3>つける</h3>
+          <p>本人だけでは足りない「手」を、仕組みと仲間で増やします。</p>
+          <ul class="dots red"><li>TikTokの外に、入口をふやす</li><li>切り抜き部隊をつくる</li></ul>
+          <a class="btn line s" href="#support" data-go="support">ページ3で見る →</a>
+        </article>
+      </div>
+
+      <div class="mult" aria-label="新規リスナーが増えるしくみ">
+        <div class="mult-row">
+          <div class="s"><small>サポート力</small>入口の数</div><span>×</span>
+          <div class="k"><small>ナレッジ</small>居てくれる率</div><span>×</span>
+          <div class="k"><small>ナレッジ</small>また来る率</div>
+        </div>
+        <p class="mult-eq">＝ 新規リスナー</p>
+      </div>
+      <p class="mult-cap">入口の「数」はページ3、入口の「質」と、そのあとの2つはページ2で作ります。</p>
+    </section>
+
+    <section class="block" id="week">
+      <span class="kicker">今週</span>
+      <h2 class="h">今週やること</h2>
+      <p class="sec-lead">配信は毎日同じ時間なので、時間の告知は一度つくれば終わりです。ナレッジが2つ、サポート力が4つ。入口をふやす行動を、先にやります。</p>
+
+      <div class="progress"><div class="meter" aria-hidden="true"><i id="meter"></i></div><output id="count" for="t1 t2 t3 t4 t5 t6">0 / 6</output></div>
+      <div class="checks">
+        <div class="ck"><input type="checkbox" id="t3"><label for="t3"><span class="box"></span><span class="tx"><span class="tag s">サポート力</span><b>ショート動画を1本作り、3か所に出す</b><small>イチオシ曲のサビ15〜30秒を、TikTok・Instagramリール・YouTubeショートへ。TikTokのロゴなしで。</small></span></label><a class="more" href="#support" data-go="support" data-target="doors">入口のやり方を見る →</a></div>
+        <div class="ck"><input type="checkbox" id="t4"><label for="t4"><span class="box"></span><span class="tx"><span class="tag s">サポート力</span><b>「毎日〇時 TikTok LIVE」を固定で出す</b><small>Xの固定ポスト、HPのトップ、各プロフィールに。1回つくれば、ずっと使えます。HPのYouTubeリンクも、チャンネルのURLに直します。</small></span></label><a class="more" href="#support" data-go="support" data-target="doors">入口のやり方を見る →</a></div>
+        <div class="ck"><input type="checkbox" id="t5"><label for="t5"><span class="box"></span><span class="tx"><span class="tag s">サポート力</span><b>ライブ会場用のQRカードを作る</b><small>次は12/31の山口カウントダウンライブ。例「毎日TikTokで歌っています。QRから来てくれたら、リクエストを1曲歌います」</small></span></label><a class="more" href="#support" data-go="support" data-target="doors">入口のやり方を見る →</a></div>
+        <div class="ck"><input type="checkbox" id="t6"><label for="t6"><span class="box"></span><span class="tx"><span class="tag s">サポート力</span><b>切り抜き部隊をつのる</b><small>配信で「お願い」を読んで、リスナー向けのページを見せます。</small></span></label><a class="more" href="#support" data-go="support" data-target="squad">お願いのコツを見る →</a></div>
+        <div class="ck"><input type="checkbox" id="t1"><label for="t1"><span class="box"></span><span class="tx"><span class="tag k">ナレッジ</span><b>数字の基準をメモする</b><small>視聴者数と平均視聴時間の、過去7日分。これが「先週」の代わりになります。</small></span></label><a class="more" href="#knowledge" data-go="knowledge" data-target="numbers">数字の見方を見る →</a></div>
+        <div class="ck"><input type="checkbox" id="t2"><label for="t2"><span class="box"></span><span class="tx"><span class="tag k">ナレッジ</span><b>今日の配信でアンケートを1回やり、ノートに3行書く</b><small>「次の曲、1か2?」の結果と、答えてくれた初めての人の様子をメモします。</small></span></label><a class="more" href="#knowledge" data-go="knowledge" data-target="note">ノートの書き方を見る →</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ページ2: ナレッジを貯める -->
+  <div id="v-knowledge" class="view" data-view="knowledge" hidden>
+    <header class="page-head k">
+      <span class="eyebrow"><i></i>2 ナレッジを貯める</span>
+      <h1 class="glitch">うまくいく<em>「型」</em>を、貯める</h1>
+      <p class="lead">大手事務所の「ノウハウの共有」にあたるものを、Kinuyoさん用に作ります。型は3つ、<b>入口・滞在・リピート</b>です。</p>
+      <nav class="flow" aria-label="3つのステップ">
+        <a href="#s1" data-go="knowledge" data-target="s1"><small>STEP 1</small><b>入口</b><span>見つけてもらう</span></a>
+        <a href="#s2" data-go="knowledge" data-target="s2"><small>STEP 2</small><b>滞在</b><span>居てもらう</span></a>
+        <a href="#s3" data-go="knowledge" data-target="s3"><small>STEP 3</small><b>リピート</b><span>また来てもらう</span></a>
+      </nav>
+      <p class="loop"><b>↻</b> STEP3の「次回の予告」が、次のSTEP1の入口になります。</p>
+    </header>
+
+    <section class="step" id="s1">
+      <div class="step-head">
+        <div class="num"><div><small>STEP</small><span>1</span></div></div>
+        <h2>入口</h2>
+      </div>
+      <p class="goal">ねらい:<em>初めての人に、配信を見つけてもらう</em></p>
+
+      <h3 class="grp">TikTokの中で</h3>
+      <ol class="todo-list">
+        <li><div><b>配信の30〜60分前に、ショート動画を1本出す</b><span>「イチオシ曲」のサビを15〜30秒。イチオシ曲は、初めての人にまず聴いてほしい、いちばん盛り上がる1曲です。</span></div></li>
+        <li><div><b>配信タイトルは、見ただけで分かる言葉にする</b><span>例 <q>歌 リクエストOK 1曲目は〇〇</q></span></div></li>
+      </ol>
+
+      <p class="bridge"><b>入口の「質」は、ここまで。</b>入口の「数」をふやす方法(X・Instagram・YouTube・ライブ・公式HP)は、<a href="#support" data-go="support" data-target="doors">ページ3 サポート力</a>へ。</p>
+
+      <p class="check"><small>見る数字</small><b>視聴者数</b><span class="t">先週より増やす</span></p>
+    </section>
+
+    <section class="step" id="s2">
+      <div class="step-head">
+        <div class="num"><div><small>STEP</small><span>2</span></div></div>
+        <h2>滞在</h2>
+      </div>
+      <p class="goal">ねらい:<em>最初の5分で帰らせず、最後まで居てもらう</em></p>
+
+      <ol class="todo-list">
+        <li><div><b>最初の1曲は、イチオシ曲で始める</b><span>あいさつより先に歌う。聴けば、何の配信か分かります。</span></div></li>
+        <li><div><b>初めての人の名前を、声に出して呼ぶ</b><span><q>〇〇さん、いらっしゃい</q> 初めてコメントした人、フォローした人が目印です。</span></div></li>
+        <li><div><b>アンケートをとる</b><span><q>次の曲、1か2? 数字だけコメントしてね</q> 数字だけなので、初めての人も答えやすい。</span></div></li>
+        <li><div><b>結果をすぐ反映して、答えてくれた新規の人の名前を呼ぶ</b><span><q>〇〇さんのおかげで1に決定!</q> 集まったら10秒以内に発表して、そのまま歌い出す。「すぐ答えてくれた」と感じてもらいます。</span></div></li>
+      </ol>
+
+      <div class="chat">
+        <p class="cap">3 → 4 のイメージ(配信のコメント欄)</p>
+        <ul>
+          <li class="host"><i class="av" aria-hidden="true">K</i><div><small>Kinuyo💜</small><p>次に歌う曲、1か2? 数字だけコメントしてね</p></div></li>
+          <li><i class="av" aria-hidden="true">初</i><div><small>初めての人<span class="tagnew">NEW</span></small><p class="ans">1</p></div></li>
+          <li class="host"><i class="av" aria-hidden="true">K</i><div><small>Kinuyo💜</small><p>〇〇さん、ありがとう! 1番に決まりました、今すぐ歌います♪</p></div></li>
+        </ul>
+      </div>
+
+      <p class="check"><small>見る数字</small><b>平均視聴時間</b><span class="t">先週より増やす</span></p>
+    </section>
+
+    <section class="step" id="s3">
+      <div class="step-head">
+        <div class="num"><div><small>STEP</small><span>3</span></div></div>
+        <h2>リピート</h2>
+      </div>
+      <p class="goal">ねらい:<em>「また来たい」理由を渡す</em></p>
+
+      <ol class="tl" aria-label="リクエストの流れ">
+        <li><small>今日の途中</small><b>リクエストを<br>聞く</b></li>
+        <li><small>今日の終わり際</small><b>次回の予告に<br>入れる</b></li>
+        <li><small>次回の最初</small><b>名前を呼んで<br>歌う</b></li>
+      </ol>
+
+      <ol class="todo-list">
+        <li><div><b>初めての人に、自然にリクエストを聞く</b><span>アンケートのあとに <q>今日はじめて来てくれた〇〇さん、次に聴きたい曲ある?</q> 1曲だけ、コメントで。</span></div></li>
+        <li><div><b>もらったリクエストを、次回の予告に入れる</b><span>終わる前の30秒で <q>次回は〇〇さんリクエストの『△△』を歌います!</q></span></div></li>
+        <li><div><b>予告を、Xとストーリーズにも出す</b><span>予告が、次の入口(STEP1)になります。</span></div></li>
+        <li><div><b>次回の最初に、名前を呼んで約束を果たす</b><span><q>〇〇さん、約束の△△、歌います!</q> 覚えていてくれた、と感じてもらえます。</span></div></li>
+      </ol>
+
+      <p class="check"><small>見る数字</small><b>リクエストをくれた人が、次の配信に来た人数</b><span class="t">先週より増やす</span></p>
+    </section>
+
+    <section class="block" id="numbers">
+      <span class="kicker k">数字の見方</span>
+      <h2 class="h">見る数字は3つだけ</h2>
+      <p class="sec-lead">STEPごとに1つ。配信が終わったら、1分でメモします。</p>
+
+      <ul class="metrics">
+        <li class="m1"><span class="chip">STEP 1</span><div><b>視聴者数</b><span class="d">プロフィール →「TikTok Studio」→「インサイト」→「LIVE」で見られます。「新規の視聴者数」が出る画面なら、そちらがおすすめです。</span></div></li>
+        <li class="m2"><span class="chip">STEP 2</span><div><b>平均視聴時間</b><span class="d">同じ「LIVE」の画面にあります。</span></div></li>
+        <li class="m3"><span class="chip">STEP 3</span><div><b>リクエストをくれた人が、次の配信に来た人数</b><span class="d">自分で数えます。名前を呼んだとき、コメント欄に来ていた人を数えるだけです。</span></div></li>
+      </ul>
+
+      <h3 class="sub-h">増えた・減ったの調べ方</h3>
+      <ol class="todo-list how">
+        <li><div><b>1日ごとではなく、7日まとめで見る</b><span>毎日配信だと、曜日で数字が変わるためです。TikTokの期間は「過去7日間」にします。</span></div></li>
+        <li><div><b>毎週同じ曜日に、3つの数字をメモする</b><span>メモ帳でOK。先週のメモが、比べる相手になります。</span></div></li>
+        <li><div><b>先週のメモと比べて、増減(%)を出す</b><span>計算は下の式だけです。</span></div></li>
+      </ol>
+      <p class="formula"><small>増減(%)</small>(今週 − 先週) ÷ 先週 × 100</p>
+
+      <p class="eg-cap">例(数字は見本です)</p>
+      <ul class="eg">
+        <li><b>視聴者数</b><em class="up">▲ +25% 増えた</em><span class="vals">先週 420人 → 今週 525人</span></li>
+        <li><b>平均視聴時間</b><em class="flat">＝ −3% 変わらず</em><span class="vals">先週 1分30秒 → 今週 1分27秒</span></li>
+        <li><b>次の配信に来た人数</b><em class="down">▼ −40% 減った</em><span class="vals">先週 5人 → 今週 3人</span></li>
+      </ul>
+      <p class="note"><b>目安</b> +10%以上は「増えた」、−10%〜+10%は「変わらず」、−10%以下は「減った」。減ったときは、そのSTEPのやり方を見直します。画面の名前は、アプリの更新で変わることがあります(古いアプリでは「クリエイターツール → アナリティクス」)。</p>
+    </section>
+
+    <section class="block" id="note">
+      <span class="kicker k">ナレッジノート</span>
+      <h2 class="h">貯める道具は、週3行のノート</h2>
+      <p class="sec-lead">大手事務所では、スタッフみんなの経験が共有されて貯まっていきます。Kinuyoさんは、このノートが「ナレッジ貯金」になります。</p>
+
+      <div class="script">
+        <p id="notetpl">今週のノート(〇/〇〜〇/〇)<br>うまくいった:<br>いかなかった:<br>次に試す(1つだけ):<br>数字:視聴者数〇人(先週比〇%) / 平均視聴時間〇分〇秒 / 次に来たリクエストの人〇人</p>
+        <button class="copy" type="button" data-copy="notetpl">ひな形をコピー</button>
+      </div>
+      <ul class="dots">
+        <li>数字をメモする日と同じ曜日に、3行だけ書きます。</li>
+        <li>2週続けてうまくいったことは、「型」として毎日やります(目安)。</li>
+        <li>「いかなかった」も、そのまま書きます。同じ失敗を、くり返さなくなります。</li>
+      </ul>
+    </section>
+
+    <div class="next">
+      <a class="btn" href="#support" data-go="support">次へ:3 サポート力をつける →</a>
+      <p>型ができたら、次は「手」をふやします。</p>
+    </div>
+  </div>
+
+  <!-- ページ3: サポート力をつける -->
+  <div id="v-support" class="view" data-view="support" hidden>
+    <header class="page-head s">
+      <span class="eyebrow"><i></i>3 サポート力をつける</span>
+      <h1 class="glitch">足りない<em class="r">「手」</em>を、増やす</h1>
+      <p class="lead">大手事務所なら、事務所の人がやってくれる「宣伝・投稿・出会いづくり」。Kinuyoさんは、<b>入口づくり</b>と<b>切り抜き部隊</b>で、それを作ります。</p>
+      <nav class="flow" aria-label="このページの内容">
+        <a href="#doors" data-go="support" data-target="doors"><small>A</small><b>入口</b><span>外にふやす</span></a>
+        <a href="#squad" data-go="support" data-target="squad"><small>B</small><b>部隊</b><span>お願いのコツ</span></a>
+        <a href="#recruit" data-go="support" data-target="recruit"><small>C</small><b>募集</b><span>リスナー向け</span></a>
+      </nav>
+    </header>
+
+    <section class="block step" id="doors">
+      <span class="kicker s">A STEP1 入口の続き</span>
+      <h2 class="h">TikTokの外に、入口をふやす</h2>
+      <p class="sec-lead">配信は毎日同じ時間なので、「毎日〇時 TikTok LIVE」を、どの入口にも同じ形で出します。1回つくれば、ずっと使えます。</p>
+      <ul class="where">
+        <li><span class="pl">X</span><div><b>「毎日〇時からTikTok LIVE」を固定ポストにする</b><span class="d">配信の10分前にも、もう1回ポスト。</span></div></li>
+        <li><span class="pl">Instagram</span><div><b>同じショート動画を、リールにも出す</b><span class="d">ロゴなしの動画で(TikTokのロゴ入りは、新しい人におすすめされにくい)。ストーリーズでも「今から歌います」。</span></div></li>
+        <li><span class="pl">YouTube</span><div><b>同じ動画を、ショートにも出す</b><span class="d">公式HPのYouTubeリンクは今、検索結果のページです。チャンネルのURLに直します。</span></div></li>
+        <li><span class="pl">ライブ・出演</span><div><b>ライブ・路上・ラジオで「毎日TikTokで歌っています」と伝える</b><span class="d">ライブと路上では、QRカードも渡す。QRを読むと何が得られるか(例:リクエスト1曲)も書く。次は 12/31 山口、1/9 大阪。</span></div></li>
+        <li><span class="pl">公式HP</span><div><b>トップに「毎日〇時 TikTok LIVE」のボタンを置く</b><span class="d">いまHPには、TikTok LIVEの案内がありません。</span></div></li>
+      </ul>
+    </section>
+
+    <section class="block tips" id="squad">
+      <span class="kicker s">B 切り抜き部隊</span>
+      <h2 class="h">リスナーが、外の仲間になる</h2>
+      <p class="sec-lead">大手事務所なら、SNSでの宣伝を事務所が手伝います。Kinuyoさんの場合は、その役を、リスナーの切り抜き部隊にお願いします。</p>
+
+      <h3 class="sub-h">集まるお願いのコツ</h3>
+      <ol class="todo-list">
+        <li><div><b>ひとつだけ頼む</b><span><q>15〜30秒、1本だけ</q> 小さなお願いほど、始めやすいです。</span></div></li>
+        <li><div><b>やり方とルールを、1枚で見せる</b><span>下の「リスナーに見せるページ」が、そのまま使えます。</span></div></li>
+        <li><div><b>投稿してくれたら、必ず反応する</b><span>配信で名前を呼んでお礼を。ある切り抜き投稿者は、本人に取り上げてもらえた時がいちばんうれしかったと話しています(<a href="https://nlab.itmedia.co.jp/cont/articles/3338484/amp/" target="_blank" rel="noopener">ねとらぼ</a>)。</span></div></li>
+        <li><div><b>最初は常連さんから</b><span>毎日来る人と、公式HPにある「Kinuyo応援ブログ」の人たちに声をかけます。</span></div></li>
+      </ol>
+
+      <h3 class="sub-h">配信で言うお願い(そのまま読めます)</h3>
+      <div class="script">
+        <p id="say">みんなにお願いがあります。好きな場面を15秒だけ切り取って、「#Kinuyo切り抜き部隊」をつけてTikTokに投稿してくれませんか? 見つけたら、私が名前を呼んでお礼を言います!</p>
+        <button class="copy" type="button" data-copy="say">文をコピー</button>
+      </div>
+      <p class="note">ハッシュタグの「#Kinuyo切り抜き部隊」は案です。変えるときは、下のリスナー向けの文字も直してください。「やくそく」は、守れるものだけ残してください。</p>
+    </section>
+
+    <section class="recruit" id="recruit">
+      <p class="rc-note">C ここから下は、リスナーに見せるページです。Kinuyoさんの言葉で書いています。</p>
+      <header class="rc-hero">
+        <span class="eyebrow"><i></i>募集中</span>
+        <h2 class="glitch rc-title">切り抜き部隊<br><em>あつまれ!</em></h2>
+        <p class="lead">ギフトがなくても、スマホ1台で、推しは広められる。</p>
+        <div class="who">
+          <div class="avatar" aria-hidden="true">K</div>
+          <div><b>Kinuyo💜🎶🎧</b><span>TikTok「Gimme The Mic」日本一位・世界一位</span></div>
+        </div>
+      </header>
+
+      <section class="ask">
+        <h3>みんなに、おねがいがあります</h3>
+        <p>配信で「ここ好き!」と思った場面を、15〜30秒だけ切り取って、TikTokに投稿してほしいです。</p>
+        <p>あなたが選んだ場面は、私が選ぶよりも、ずっと人の心に届きます。あなたの1本が、まだ私を知らない誰かの「はじめまして」になります。</p>
+        <p class="sign">Kinuyo💜</p>
+      </section>
+
+      <h3 class="rc-h">こんな人も、もう部隊員</h3>
+      <ul class="chips">
+        <li>ギフトは難しいけど、応援したい人</li>
+        <li>編集は初めての人</li>
+        <li>今日はじめて来た人</li>
+        <li>1本だけ投稿する人</li>
+      </ul>
+
+      <h3 class="rc-h">やり方は3ステップ</h3>
+      <ol class="steps3">
+        <li><div><b>好きな場面を、画面収録する</b><span class="d">配信を見ながら、スマホの画面収録でOKです。</span></div></li>
+        <li><div><b>15〜30秒に切り取る</b><span class="d">TikTokの編集で、好きなところだけ残します。</span></div></li>
+        <li>
+          <div><b>2つをつけて、投稿する</b><span class="d">ボタンを押すと、コピーできます。</span></div>
+          <div class="copyrows">
+            <div class="copyrow"><code id="tag">#Kinuyo切り抜き部隊</code><button class="copy" type="button" data-copy="tag">コピー</button></div>
+            <div class="copyrow"><code id="hdl">@kinuyosinger</code><button class="copy" type="button" data-copy="hdl">コピー</button></div>
+          </div>
+        </li>
+      </ol>
+
+      <h3 class="rc-h">こんな場面が、おすすめ</h3>
+      <ul class="dots">
+        <li>サビの、いちばん盛り上がるところ</li>
+        <li>アンケートで決まった曲を、歌い出す瞬間</li>
+        <li>名前を呼んで、「ありがとう」と言った場面</li>
+        <li>思わず笑った、トークの場面</li>
+      </ul>
+
+      <h3 class="rc-h">投稿してくれたら</h3>
+      <ul class="dots">
+        <li>見つけたら、配信で名前を呼んでお礼を言います。</li>
+        <li>毎週1本、ベストの切り抜きを選んで、配信で紹介します。</li>
+        <li>1本だけでも、あなたはもう部隊員です。</li>
+      </ul>
+
+      <h3 class="rc-h">かんたんルール</h3>
+      <p class="sec-lead">この範囲での切り抜きは、Kinuyoが許可しています。</p>
+      <ul class="dots red">
+        <li>投稿に「@kinuyosinger」を入れてください。元の配信が分かるようにするためです。</li>
+        <li>他のリスナーさんのコメントや名前は、映さないでください。</li>
+        <li>私が「消してください」とお願いしたときは、すぐに消してください。</li>
+      </ul>
+      <p class="note">おすすめは、Dream Time・Fly High、トーク、リアクションの場面です。他のアーティストの曲は、投稿先のルールで制限されることがあります。</p>
+
+      <div class="cta">
+        <h3 class="rc-h">まずは今日、1本だけ</h3>
+        <a class="btn" href="https://www.tiktok.com/@kinuyosinger" target="_blank" rel="noopener">KinuyoのTikTokを開く</a>
+        <p>LIVEは毎日しています。</p>
+      </div>
+    </section>
+
+    <div class="next">
+      <a class="btn line" href="#week" data-go="gap" data-target="week">今週やることに戻る →</a>
+      <p>差を知る → ナレッジを貯める → サポート力をつける。1つずつ、うめていきます。</p>
+    </div>
+  </div>
+
+  <details class="refs">
+    <summary>参考にした日本のサイト</summary>
+    <div>
+      <p>大手事務所のサポート内容:<a href="https://lifestyle.assist-all.co.jp/?p=52585" target="_blank" rel="noopener">assist-all(ライバー事務所の比較とサポート内容)</a> ・ <a href="https://aumo.jp/articles/4342439" target="_blank" rel="noopener">aumo(TikTokライバー事務所の選び方とメリット)</a> ・ <a href="https://ieagent.jp/kurashi-plus/?p=48296" target="_blank" rel="noopener">ieagent(IRIAMの事務所とメリット・デメリット)</a> ・ <a href="https://dxmagazine.jp/?p=173645" target="_blank" rel="noopener">DXマガジン(TikTok LIVEの音楽クリエイター育成、2025年11月)</a> ・ <a href="https://dime.jp/company_news/detail/?pr=2772402" target="_blank" rel="noopener">DIME(TikTok LIVEエージェンシー向けの発表、2026年11月)</a></p>
+      <p>ライブのデータの見方:<a href="https://stock-sun.com/?p=124352" target="_blank" rel="noopener">STOCKSUN(TikTokアナリティクスの解説)</a></p>
+      <p>配信のコツ(名前を呼ぶ・アンケート・告知):<a href="https://lifestyle.assist-all.co.jp/tiktok-live-streaming-guide/" target="_blank" rel="noopener">assist-all(TikTok Liveの配信ガイド)</a> ・ <a href="https://www.sungrove.co.jp/tiktok-live/" target="_blank" rel="noopener">sungrove(TikTok LIVEの解説)</a> ・ <a href="https://linestep.jp/?p=45368" target="_blank" rel="noopener">LINEステップ(TikTokライブの解説)</a></p>
+      <p>他のSNSとリアルの場:<a href="https://www.businessinsider.jp/article/259235/" target="_blank" rel="noopener">Business Insider Japan(2022年9月)</a> ・ <a href="https://find-model.jp/insta-lab/instagram-reels-good-and-bad-point" target="_blank" rel="noopener">Insta lab(リールの解説)</a> ・ <a href="https://aurant-technologies.com/?p=15991" target="_blank" rel="noopener">Aurant Technologies(ライブ会場のQR・MC)</a> ・ <a href="https://utaten.com/live/music-activity-advertisement/" target="_blank" rel="noopener">UtaTen(フライヤー・路上ライブでの告知)</a></p>
+      <p>切り抜きのルール:<a href="https://kai-you.net/article/92488" target="_blank" rel="noopener">KAI-YOU(にじさんじの切り抜き動画の事前申請)</a> ・ <a href="https://monolith.law/youtuber-vtuber/sing-song-copyright-youtube" target="_blank" rel="noopener">モノリス法律事務所(歌ってみたと著作権)</a></p>
+      <p>事務所のサポートは、事務所ごとに違います。「いまのKinuyoさん」の欄は、公式HP(2026年11月14日に確認)とご本人のお話をもとにした想定です。Instagramの扱いは変わることがあります。</p>
+    </div>
+  </details>
+
+</main>
+
+<script>
+(function () {
+  /* ページ(タブ)の切り替え。#gap / #knowledge / #support。ページ内の場所(#week など)や、前の版の #plan / #kirinuki も開けます */
+  var names = ["gap", "knowledge", "support"];
+  var alias = { plan: "knowledge", kirinuki: "recruit" };
+  var views = {};
+  names.forEach(function (n) { views[n] = document.getElementById("v-" + n); });
+  var tabs = [].slice.call(document.querySelectorAll(".tabs a"));
+  var current = null;
+  var pending = null;
+  var reduce = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+  function show(n) {
+    names.forEach(function (k) { if (views[k]) views[k].hidden = (k !== n); });
+    tabs.forEach(function (a) {
+      if (a.getAttribute("data-view") === n) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    current = n;
+  }
+  function go(view, id) {
+    var changed = view !== current;
+    if (changed) show(view);
+    var el = id ? document.getElementById(id) : null;
+    if (el) { el.scrollIntoView({ behavior: (!changed && !reduce) ? "smooth" : "auto", block: "start" }); return; }
+    if (changed) window.scrollTo(0, 0);
+  }
+  function route() {
+    var h = "";
+    try { h = decodeURIComponent((location.hash || "").replace(/^#/, "")); } catch (e) { h = ""; }
+    h = alias[h] || h;
+    if (names.indexOf(h) > -1) { var p = pending; pending = null; go(h, p); return; }
+    var el = h ? document.getElementById(h) : null;
+    var v = el && el.closest ? el.closest(".view") : null;
+    if (v) { pending = null; go(v.getAttribute("data-view"), h); return; }
+    if (!current) show("gap");
+  }
+  window.addEventListener("hashchange", route);
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("[data-go]") : null;
+    if (!a) return;
+    e.preventDefault();
+    var view = a.getAttribute("data-go");
+    var id = a.getAttribute("data-target");
+    if (location.hash === "#" + view) { go(view, id); }
+    else { pending = id; location.hash = view; }
+  });
+  route();
+
+  /* 今週やることのチェック(このブラウザに保存) */
+  var ids = ["t1", "t2", "t3", "t4", "t5", "t6"];
+  var key = "kinuyo-roadmap-todo-v4";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}") || {}; } catch (e) { saved = {}; }
+  var meter = document.getElementById("meter");
+  var count = document.getElementById("count");
+  function render() {
+    var n = 0;
+    ids.forEach(function (id) { if (document.getElementById(id).checked) n++; });
+    count.textContent = n + " / " + ids.length;
+    meter.style.width = (n / ids.length * 100) + "%";
+  }
+  ids.forEach(function (id) {
+    var el = document.getElementById(id);
+    el.checked = !!saved[id];
+    el.addEventListener("change", function () {
+      saved[id] = el.checked;
+      try { localStorage.setItem(key, JSON.stringify(saved)); } catch (e) {}
+      render();
+    });
+  });
+  render();
+
+  /* コピーボタン */
+  [].slice.call(document.querySelectorAll(".copy")).forEach(function (btn) {
+    var label = btn.textContent;
+    var timer = null;
+    function flash(msg) {
+      btn.textContent = msg;
+      clearTimeout(timer);
+      timer = setTimeout(function () { btn.textContent = label; }, 2200);
+    }
+    function selectText(el) {
+      try {
+        var r = document.createRange();
+        r.selectNodeContents(el);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+      } catch (e) {}
+      flash("選択しました");
+    }
+    btn.addEventListener("click", function () {
+      var el = document.getElementById(btn.getAttribute("data-copy"));
+      if (!el) return;
+      var text = (el.innerText || el.textContent || "").trim();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { flash("コピーしました"); }, function () { selectText(el); });
+      } else {
+        selectText(el);
+      }
+    });
+  });
+})();
+</script>
+
+</body></html>
