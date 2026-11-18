@@ -1,0 +1,216 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Kinuyoの音楽を、できる日にできる分だけ応援する方法 💜</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 1カラムの縦スクロール。大きな文字・大きなボタン・色で段階を見分ける。明るい単一テーマ */
+:root{
+  --bg:#FFFFFF; --soft:#F6F1FF; --line:#E4DAF7;
+  --ink:#2A1F45; --muted:#62577D;
+  --purple:#7B3FE4; --pink:#E0184A; --cyan:#12C6D1; --yellow:#FFC93C;
+  --font:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.75;
+  padding-block:0 56px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3,p,ul,ol{margin:0}
+h1,h2,h3{text-wrap:balance;line-height:1.35}
+a{color:var(--purple)}
+:focus-visible{outline:3px solid var(--purple);outline-offset:3px;border-radius:6px}
+
+/* ヘッダー */
+.hero{padding-top:32px;display:flex;flex-direction:column;gap:14px}
+.tag{align-self:flex-start;background:var(--purple);color:#fff;font-weight:700;font-size:14px;letter-spacing:.08em;padding:4px 14px;border-radius:99px}
+h1{font-size:clamp(30px,8vw,46px);font-weight:900}
+h1 span{background:linear-gradient(transparent 62%,var(--yellow) 62%)}
+.lead{font-size:18px;color:var(--muted)}
+.bar{height:8px;border-radius:99px;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink))}
+
+h2{font-size:clamp(23px,6vw,30px);font-weight:900;display:flex;flex-direction:column;gap:6px}
+h2 small{font-size:15px;font-weight:500;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:18px}
+
+/* 3つの方法 */
+.three{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.way{background:var(--soft);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.way b{font-size:22px}
+.way .cost{align-self:flex-start;font-size:14px;font-weight:700;padding:2px 12px;border-radius:99px;background:#fff;border:2px solid var(--line)}
+.way.a{border-top:8px solid var(--cyan)} .way.b{border-top:8px solid var(--yellow)} .way.c{border-top:8px solid var(--pink)}
+
+/* 手順 */
+.steps{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 16px}
+.steps li::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:var(--purple);color:#fff;font-weight:900;display:grid;place-items:center}
+.steps div{min-width:0}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0}
+.chips li{background:#fff;border:2px solid var(--line);border-radius:99px;padding:2px 14px;font-size:15px;font-weight:500}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:10px 24px;border-radius:99px;background:var(--purple);color:#fff;font-weight:900;text-decoration:none;text-align:center}
+.btn.sub{background:#fff;color:var(--purple);border:3px solid var(--purple)}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px}
+
+.new{background:linear-gradient(135deg,#EFE6FF,#E3FAFB);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.new .date{font-weight:700;color:var(--purple)}
+.new .songs{display:flex;flex-wrap:wrap;gap:10px}
+.new .songs span{background:#fff;border-radius:14px;padding:6px 18px;font-size:22px;font-weight:900}
+
+/* ノルマ */
+.lv{border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:12px;border:3px solid var(--c)}
+.lv header{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.badge{background:var(--c);color:var(--bc,var(--ink));font-weight:900;font-size:20px;padding:2px 18px;border-radius:99px}
+.stars{color:var(--c);filter:saturate(1.2);font-size:20px;letter-spacing:.1em}
+.time{margin-left:auto;font-weight:700;font-size:15px;color:var(--muted)}
+.lv .goal{font-size:19px;font-weight:700}
+.lv ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.lv label{display:flex;gap:12px;align-items:flex-start;background:#fff;border-radius:16px;padding:12px 14px;border:2px solid var(--line);cursor:pointer}
+.lv input{flex:none;width:28px;height:28px;margin:2px 0 0;accent-color:var(--purple)}
+.lv label:has(input:checked){background:var(--soft);border-color:var(--purple)}
+.lv label:has(input:checked) span{text-decoration:line-through;text-decoration-color:var(--purple);color:var(--muted)}
+.lv .opt{font-size:15px;color:var(--muted)}
+.l1{--c:var(--cyan)} .l2{--c:var(--yellow)} .l3{--c:var(--pink);--bc:#fff} .l4{--c:var(--purple);--bc:#fff}
+.l1{background:#F0FDFE} .l2{background:#FFFAEA} .l3{background:#FFF3F6} .l4{background:#F6F1FF}
+
+.score{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ink);color:#fff;border-radius:99px;padding:8px 18px;font-weight:700;display:flex;justify-content:space-between;gap:10px;font-size:15px}
+.score b{color:var(--yellow);font-variant-numeric:tabular-nums}
+.note{font-size:15px;color:var(--muted)}
+
+.links{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.links a{background:var(--soft);border-radius:16px;padding:12px 14px;font-weight:700;text-decoration:none;display:flex;flex-direction:column;min-width:0}
+.links a small{font-weight:500;color:var(--muted);font-size:13px}
+footer{text-align:center;color:var(--muted);font-size:15px}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s}.btn:hover{transform:translateY(-2px)}}
+</style>
+
+<div class="wrap">
+
+<div class="hero">
+  <span class="tag">KINUYO 応援ガイド</span>
+  <h1>Kinuyoの音楽を、<br><span>できる日にできる分だけ</span>応援する方法 💜</h1>
+  <p class="lead">聴く・買う・広める。どれも、無理のない範囲でOKです。</p>
+  <div class="bar"></div>
+</div>
+
+<section>
+  <h2>応援の方法は、この3つだけ</h2>
+  <div class="three">
+    <div class="way a"><b>① 聴く</b><span class="cost">無料</span><p>Spotifyなどで検索して再生するだけ。再生は1回ずつ数えられます。</p></div>
+    <div class="way b"><b>② ダウンロード</b><span class="cost">1曲から購入OK</span><p>iTunes Storeやmoraなどで曲を購入して、自分のものにできます。</p></div>
+    <div class="way c"><b>③ 広める</b><span class="cost">無料</span><p>好きな曲を友だちやSNSに教える。新しい人との出会いになります。</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>聴き方（Spotifyの場合）<small>ほかのアプリでも同じ流れです</small></h2>
+  <ol class="steps">
+    <li><div><b>アプリを開く</b><br>Spotifyを開きます。入っていなければ無料でインストールできます。</div></li>
+    <li><div><b>「Kinuyo」で検索</b><br>虫めがねマーク → 「Kinuyo」と入力 → アーティストを選びます。</div></li>
+    <li><div><b>「フォロー」を押す</b><br>新曲が出たときに見つけやすくなります。</div></li>
+    <li><div><b>曲をタップして再生</b><br>気に入った曲は ♡ を押すと、あとで探しやすくなります。</div></li>
+  </ol>
+</section>
+
+<section>
+  <h2>ダウンロード（購入）のしかた</h2>
+  <ol class="steps">
+    <li><div><b>下のボタンで配信ページを開く</b><br>各サービスへのリンクがまとまっています。</div></li>
+    <li><div><b>使いたいサービスを選ぶ</b><br>購入できるのは、iTunes Store、mora、レコチョク、Amazon、OTOTOYなどです。</div></li>
+    <li><div><b>好きな曲を1曲だけ購入</b><br>アルバムでなく、1曲からでも大丈夫です。</div></li>
+  </ol>
+  <div class="btnrow"><a class="btn" href="http://tunecore.co.jp/artists/Kinuyo" target="_blank" rel="noopener">配信サービス一覧を開く</a></div>
+  <p class="note">配信中のサービス（公式サイトより）</p>
+  <ul class="chips">
+    <li>Spotify</li><li>Apple Music</li><li>iTunes Store</li><li>YouTube Music</li><li>Amazon</li><li>LINE MUSIC</li><li>AWA</li><li>mora</li><li>レコチョク</li><li>KKBOX</li><li>TikTok</li><li>Rakuten music</li><li>deezer</li><li>ほか多数</li>
+  </ul>
+</section>
+
+<section>
+  <h2>まずはこの新曲から</h2>
+  <div class="new">
+    <span class="date">2026年9月10日 配信リリース</span>
+    <div class="songs"><span>Dream Time</span><span>Fly High</span></div>
+    <p>どの配信サービスでも「Kinuyo」で検索すると見つかります。</p>
+  </div>
+</section>
+
+<section>
+  <h2>応援ノルマ 4つのレベル<small>全部できなくて大丈夫。1つできたら、もう立派な応援です。</small></h2>
+  <div class="score" aria-live="polite"><span>できた数</span><b id="count">0 / 8</b></div>
+
+  <article class="lv l1">
+    <header><span class="badge">初級</span><span class="stars" aria-hidden="true">★</span><span class="time">所要 1分</span></header>
+    <p class="goal">フォローして、1曲聴く</p>
+    <ul>
+      <li><label><input type="checkbox" data-k="a1"><span>Spotifyなどで「Kinuyo」を検索して、フォローした</span></label></li>
+      <li><label><input type="checkbox" data-k="a2"><span>「Dream Time」を1回聴いた</span></label></li>
+    </ul>
+  </article>
+
+  <article class="lv l2">
+    <header><span class="badge">中級</span><span class="stars" aria-hidden="true">★★</span><span class="time">1回 約5分</span></header>
+    <p class="goal">新曲を聴く（週に3日でOK）</p>
+    <ul>
+      <li><label><input type="checkbox" data-k="b1"><span>「Dream Time」を最後まで1回聴いた</span></label></li>
+      <li><label><input type="checkbox" data-k="b2"><span>「Fly High」を最後まで1回聴いた</span></label></li>
+      <li><label><input type="checkbox" data-k="b3"><span>好きな曲に ♡ を押した、またはプレイリストに入れた</span></label></li>
+    </ul>
+  </article>
+
+  <article class="lv l3">
+    <header><span class="badge">上級</span><span class="stars" aria-hidden="true">★★★</span><span class="time">週に1回・3分</span></header>
+    <p class="goal">毎週、広める</p>
+    <ul>
+      <li><label><input type="checkbox" data-k="c1"><span>好きな曲のリンクを、SNSで1回シェアした</span></label></li>
+      <li><label><input type="checkbox" data-k="c3"><span>友だち1人に「この曲いいよ」と伝えた</span></label></li>
+      <li><label><input type="checkbox" data-k="c2"><span>TikTokで、Kinuyoの動画に ♡ かコメントをした</span></label></li>
+    </ul>
+  </article>
+
+  <article class="lv l4">
+    <header><span class="badge">最上級</span><span class="stars" aria-hidden="true">★★★★</span><span class="time">月に1回・5分</span></header>
+    <p class="goal">好きな曲を手元に残す</p>
+    <ul>
+      <li><label><input type="checkbox" data-k="d1"><span>好きな曲を2曲ダウンロード購入した</span></label></li>
+      <li><label><input type="checkbox" data-k="d2"><span>友だち1人に、Kinuyoのフォローをすすめた</span></label></li>
+    </ul>
+    <p class="opt">気持ちに余裕があるときだけ：CDやグッズのご購入、ファンクラブ入会もあります（下のリンクから）。</p>
+  </article>
+  <p class="note">チェックはこのスマホ・パソコンの中だけに保存されます。</p>
+</section>
+
+<section>
+  <h2>公式リンク</h2>
+  <div class="links">
+    <a href="https://www.kinuyo-music.com/" target="_blank" rel="noopener">公式HP<small>ライブ予定・プロフィール</small></a>
+    <a href="https://www.tiktok.com/@kinuyosinger" target="_blank" rel="noopener">TikTok<small>@kinuyosinger</small></a>
+    <a href="https://www.instagram.com/kinuyo_official/" target="_blank" rel="noopener">Instagram<small>kinuyo_official</small></a>
+    <a href="https://twitter.com/Kinuyoutauyo" target="_blank" rel="noopener">X（Twitter）<small>@Kinuyoutauyo</small></a>
+    <a href="https://www.kinuyo-music.com/shop" target="_blank" rel="noopener">CD・グッズ<small>ショップ</small></a>
+    <a href="https://www.kinuyo-music.com/fanclub" target="_blank" rel="noopener">ファンクラブ<small>年会費 2,400円／6,000円</small></a>
+  </div>
+</section>
+
+<footer>聴いてくれるだけで、ちゃんと力になります。ありがとうございます。</footer>
+</div>
+
+<script>
+(function(){
+  var KEY="kinuyo-guide-v2", boxes=[].slice.call(document.querySelectorAll("input[data-k]")), saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+  function update(){
+    var n=boxes.filter(function(b){return b.checked}).length;
+    document.getElementById("count").textContent=n+" / "+boxes.length;
+    var s={};boxes.forEach(function(b){if(b.checked)s[b.dataset.k]=1});
+    try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}
+  }
+  boxes.forEach(function(b){b.checked=!!saved[b.dataset.k];b.addEventListener("change",update)});
+  update();
+})();
+</script>
+
+</body></html>
